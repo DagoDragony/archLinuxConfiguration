@@ -6,5 +6,5 @@
 #
 ####################################
 
-cp -r ~/.fonts/. .fonts/
-cp -r ~/.config/i3/config .config/i3/
+cp -r ~/.fonts/. configuration/.fonts/
+cp -r ~/.config/i3/config configuration/.config/i3/
