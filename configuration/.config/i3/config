@@ -250,3 +250,6 @@ focus_follows_mouse no
 # exec_always compton
 exec_always feh --bg-scale ~/Projects/wallpapers/Landscapes/landscape_71.jpg
 
+# change language
+exec "setxkbmap -layout us,de"
+exec "setxkbmap -option 'grp:alt_shift_toggle'"
