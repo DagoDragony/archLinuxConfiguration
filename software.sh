@@ -138,26 +138,27 @@ sudo pacman -S rofi
 sudo pacman -S xorg-xrandr
 sudo pacman -S redshift
 
-Mkdir ~/bin
-nano ~/bin/startup
-# copy and past these
-xrandr --output DP2-1 --pos 0x0
-xrandr --output DP2-2 --pos 1920x0
-xrandr --output DP2-3 --pos 3840x0
-
-redshift -O 4000
-
-Chmod 755 ~/bin/startup
-
 # to file that is result of
 I3-config-wizard # to know config file location
+sudo pacman -S i3blocks
+cp /etc/i3blocks.conf ./
+sudo pacman -S sysstat
+sudo paman -S acpi # batery stats
+sudo pacman -S alsa-utils # sound
+sudo pacman -S extra/pulseaudio-alsa
 
 
-Set font in i3 config
+# Set font in i3 config
 font pango:System San Francisco Display 10
 https://github.com/supermarin/YosemiteSanFranciscoFont
 Unzip it
 Mv *.ttf ~/.fonts/
+
+# install font from
+https://github.com/FortAwesome/Font-Awesome/releases
+# to refreh font cache
+sudo fc-cache -f -v
+
 # setup font in applications
 sudo pacman -S lxappearance
 # go to lxappearance, do any default font action, and .gtkrc-2.0 file will be generated
@@ -185,6 +186,8 @@ Ip link
 ip link set wlp3s0 up
 sudo pacman -S networkmanager
 sudo pacman -S network-manager-applet
+
+sudo pacman -S feh
 
 
 

@@ -7,13 +7,11 @@
 ####################################
 
 foldersToCopyFromHomeDir=(
-#    ".fonts/."
+    ".fonts/."
     ".config/i3/config"
+    ".config/i3/i3blocks.conf"
     "bin/startup"
 )
-
-# cp -r "~/.fonts/." "configuration/.fonts/"
-
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/configuration"
 
@@ -24,10 +22,5 @@ for folderToCopy in "${foldersToCopyFromHomeDir[@]}"; do
     else
         destination="$scriptDir/$folderToCopy"
     fi
-    #echo "~/$folderToCopy $destination"
     cp -rf ~/$folderToCopy $destination
 done
-
-#cp -r ~/.fonts/. configuration/.fonts/
-#cp -r ~/.config/i3/config configuration/.config/i3/
-#cp -r ~/bin/startup configuration/bin/startup
