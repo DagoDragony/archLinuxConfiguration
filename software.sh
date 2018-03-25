@@ -93,6 +93,7 @@ nano /etc/sudoers # add  line like root, but not root
 
 Sudo pacman -S xorg-xinit
 pacman -Sy gnome gnome-extra
+# gnome terminal fails without gdm
 systemctl enable gdm.service
 
 pacman -Sy archlinux-wallpaper
@@ -127,12 +128,13 @@ sudo pacman -S transmission-gtk # torrent client
 sudo pacman -S xfce4-goodies # screenshots only
 
 
-
-
 # i3 stuff
 Sudo pacman -S i3
 Sudo pacman -S i3lock
+# preference is rofi
 Sudo pacman -S dmenu
+sudo pacman -S rofi
+
 sudo pacman -S xorg-xrandr
 sudo pacman -S redshift
 
@@ -146,20 +148,11 @@ xrandr --output DP2-3 --pos 3840x0
 redshift -O 4000
 
 Chmod 755 ~/bin/startup
-# append
-exec --no-startup-id "~/bin/startup"
-bindsym $mod+l exec --no-startup-id i3lock -c 222222
-
-
-
-bindsym --release Shift+Print exec xfce4-screenshooter -rc
-exec --no-startup-id xfce4-clipman
-
 
 # to file that is result of
 I3-config-wizard # to know config file location
 
-# tilix because for some reason terminal doesn’t work
+
 Set font in i3 config
 font pango:System San Francisco Display 10
 https://github.com/supermarin/YosemiteSanFranciscoFont
