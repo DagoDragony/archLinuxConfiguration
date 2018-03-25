@@ -91,7 +91,7 @@ pacman -S sudo
 nano /etc/sudoers # add  line like root, but not root
 
 
-Sudo pacman -S xorg-xinit
+sudo pacman -S xorg-xinit
 pacman -Sy gnome gnome-extra
 # gnome terminal fails without gdm
 systemctl enable gdm.service
@@ -104,7 +104,7 @@ systemctl enable dhcpcd
 # set HandleLidSwitch=ignore
 nano /etc/systemd/logind.conf
 # Remove user
-Sudo su -
+sudo su -
 Userdel dago
 Userdel -r dago # also deletes user home directory and mail spool
 # Arch User Repository (AUR)
@@ -129,10 +129,10 @@ sudo pacman -S xfce4-goodies # screenshots only
 
 
 # i3 stuff
-Sudo pacman -S i3
-Sudo pacman -S i3lock
+sudo pacman -S i3
+sudo pacman -S i3lock
 # preference is rofi
-Sudo pacman -S dmenu
+sudo pacman -S dmenu
 sudo pacman -S rofi
 
 sudo pacman -S xorg-xrandr
