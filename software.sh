@@ -195,12 +195,3 @@ sudo pacman -Syu
 
 I3-msg exit # to logout
 
-
-
-
-
-
-
-
-
-
