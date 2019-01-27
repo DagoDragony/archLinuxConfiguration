@@ -187,7 +187,10 @@ ip link set wlp3s0 up
 sudo pacman -S networkmanager
 sudo pacman -S network-manager-applet
 
+# for desktop picture
 sudo pacman -S feh
+# terminal file manager
+sudo pacman -S ranger
 
 
 
@@ -195,3 +198,4 @@ sudo pacman -Syu
 
 I3-msg exit # to logout
 
+sudo pacman -S terminator

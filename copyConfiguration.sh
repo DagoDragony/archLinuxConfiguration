@@ -8,8 +8,7 @@
 
 foldersToCopyFromHomeDir=(
     ".fonts/."
-    ".config/i3/config"
-    ".config/i3/i3blocks.conf"
+    ".config/i3/."
     "bin/startup"
 )
 
