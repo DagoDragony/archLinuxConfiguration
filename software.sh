@@ -199,3 +199,7 @@ sudo pacman -Syu
 I3-msg exit # to logout
 
 sudo pacman -S terminator
+
+sudo pacman -S fish
+
+sudo pacman -S htop

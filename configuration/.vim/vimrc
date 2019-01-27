@@ -1,0 +1,4 @@
+" show line numbers
+set number relativenumber
+
+

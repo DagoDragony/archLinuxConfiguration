@@ -9,6 +9,7 @@
 foldersToCopyFromHomeDir=(
     ".fonts/."
     ".config/i3/."
+    ".vim/."
     "bin/startup"
 )
 
