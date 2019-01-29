@@ -203,3 +203,19 @@ sudo pacman -S terminator
 sudo pacman -S fish
 
 sudo pacman -S htop
+
+# reads various types of documents
+# for mouseless, key bindings like vim, fast
+# :print
+# + - resize
+# night mode
+# links like vimium
+# configurable hotkeys and configuration
+# bookmark like vim
+sudo pacman -S zathura
+sudo pacman -S zathura-pdf-poppler
+
+# for documentations
+sudo pacman -S groff
+
+
