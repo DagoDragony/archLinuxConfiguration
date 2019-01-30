@@ -218,4 +218,7 @@ sudo pacman -S zathura-pdf-poppler
 # for documentations
 sudo pacman -S groff
 
+# customizable browser, easy hotkeys
+# vimium like automatically
+sudo pacman -S qutebrowser
 
