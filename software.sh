@@ -206,7 +206,7 @@ sudo pacman -S htop
 
 # reads various types of documents
 # for mouseless, key bindings like vim, fast
-# :print
+# :print'
 # + - resize
 # night mode
 # links like vimium
@@ -222,3 +222,21 @@ sudo pacman -S groff
 # vimium like automatically
 sudo pacman -S qutebrowser
 
+# needed for saving custom i3 layouts
+sudo pacman -S perl-anyevent-i3
+
+
+# thumbnail preview
+# sxiv -ft */*.jpg
+sudo pacman -S sxiv
+
+# terminator alternative
+sudo pacman -S tmux
+
+# statistical computing and graphics
+sudo pacman -S r
+
+# terminal
+# you can set instance name for easier configuration#
+# used in i3 scratch windows
+sudo pacman -S st

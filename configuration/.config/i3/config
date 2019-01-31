@@ -123,8 +123,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# disabled because of key mapping duplication
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -245,6 +246,9 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+bindsym $mod+u	[instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+bindsym $mod+a	[instance="math"]     scratchpad show; [instance="math"]     move position center
+
 default_border none
 hide_edge_borders both
 
@@ -258,5 +262,23 @@ exec_always feh --bg-scale ~/Projects/wallpapers/Landscapes/landscape_71.jpg
 exec_always "setxkbmap -layout us,lt,ru"
 exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 
+# #---Dropdown/Scratchpad Windows---# #
+# First I have a tmux window used for background scripts
+# I'll later bind this to mod+u
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 625 400
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] border pixel 5
+exec --no-startup-id st -n dropdown -e tmux
+
+# Then I have a window running R I use for basic arithmetic
+# I'll later bind this to mod+a
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 800 300
+for_window [instance="math"] move scratchpad
+for_window [instance="math"] border pixel 5
+exec --no-startup-id st -n math -f mono:pixelsize=24 -e R -q
+
+
 exec_always "~/bin/hotplug_monitor.sh"
-exec_always "~/.config/i3/set_keyboard"
+exec_always "~/.config/i3/set_keyboard.sh"
