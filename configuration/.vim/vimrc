@@ -1,4 +1,17 @@
-" show line numbers
+" not needed anymore after lightline.vim plugin is installed
+set noshowmode
 set number relativenumber
+
+"ns will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/seoul256.vim'
+Plug 'gabrielelana/vim-markdown'
+Plug 'itchyny/lightline.vim'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
 
 
