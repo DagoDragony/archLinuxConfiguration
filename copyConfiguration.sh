@@ -10,6 +10,7 @@ foldersToCopyFromHomeDir=(
     ".fonts/."
     ".config/i3/."
     ".config/ranger/."
+    ".config/rofi/."
     ".config/qutebrowser/."
     ".vim/."
     "bin/startup"

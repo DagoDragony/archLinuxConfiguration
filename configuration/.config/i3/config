@@ -18,6 +18,7 @@ set $ctrl Control
 # is used in the bar {} block below.
 font pango:System San Francisco Display 10
 
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -209,7 +210,7 @@ exec --no-startup-id "~/bin/startup"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command i3blocks -c ~/.config/i3blocks/config
 	colors {
               separator $base03
               background $base01
@@ -224,7 +225,7 @@ bar {
 
 
 bindsym $mod+l exec --no-startup-id i3lock -c 222222
-bindsym $ctrl+b exec qutebrowser
+# bindsym $ctrl+b exec qutebrowser
 bindsym --release Shift+Print exec xfce4-screenshooter -rc
 exec --no-startup-id xfce4-clipman
 
@@ -248,6 +249,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+u	[instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 bindsym $mod+a	[instance="math"]     scratchpad show; [instance="math"]     move position center
+
+bindsym $mod+Shift+d exec bash ~/.config/rofi/scripts/picker.sh
 
 default_border none
 hide_edge_borders both

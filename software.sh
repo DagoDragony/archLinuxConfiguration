@@ -240,3 +240,10 @@ sudo pacman -S r
 # you can set instance name for easier configuration#
 # used in i3 scratch windows
 sudo pacman -S st
+
+# for converting md to pdf
+sudo pacman -S pandoc
+sudo pacman -S texlive-most
+
+sudo pacman -S xclip
+sudo pacman -S xdotool
