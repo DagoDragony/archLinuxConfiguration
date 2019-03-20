@@ -247,3 +247,6 @@ sudo pacman -S texlive-most
 
 sudo pacman -S xclip
 sudo pacman -S xdotool
+
+# for clock synchronization, it really gets off
+sudo pacman -S ntp
