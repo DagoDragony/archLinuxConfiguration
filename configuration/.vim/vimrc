@@ -16,3 +16,4 @@ call plug#end()
 
 " Recompile pdf files automatically
 	autocmd BufWritePost ~/Projects/knowledge/linux/test.md !pandoc test.md --pdf-engine=xelatex -o test.pdf
+

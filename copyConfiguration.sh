@@ -14,6 +14,8 @@ foldersToCopyFromHomeDir=(
     ".config/qutebrowser/."
     ".vim/."
     "bin/startup"
+    "bin/hotplug_monitor.sh"
+    "bin/setDefaultWorkspaces.sh"
 )
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/configuration"
