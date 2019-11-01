@@ -5,6 +5,13 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+
+exec_always compton
+exec_always "~/.config/i3/set_keyboard.sh"
+exec --no-startup-id xfce4-clipman
+exec "~/bin/setDefaultWorkspaces.sh"
+exec --no-startup-id "~/bin/startup"
+# exec "~/bin/hotplug_monitor.sh"
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -203,7 +210,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec --no-startup-id "~/bin/startup"
 
 gaps inner 5
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -227,7 +233,6 @@ bar {
 bindsym $mod+l exec --no-startup-id i3lock -c 222222
 # bindsym $ctrl+b exec qutebrowser
 bindsym --release Shift+Print exec xfce4-screenshooter -rc
-exec --no-startup-id xfce4-clipman
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -258,12 +263,7 @@ hide_edge_borders both
 focus_follows_mouse no
 
 
-# exec_always compton
 exec_always feh --bg-scale ~/Projects/wallpapers/Landscapes/landscape_71.jpg
-
-# change language
-exec_always "setxkbmap -layout us,lt,ru"
-exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 
 # #---Dropdown/Scratchpad Windows---# #
 # First I have a tmux window used for background scripts
@@ -282,7 +282,3 @@ for_window [instance="math"] move scratchpad
 for_window [instance="math"] border pixel 5
 exec --no-startup-id st -n math -f mono:pixelsize=24 -e R -q
 
-
-exec "~/bin/hotplug_monitor.sh"
-exec "~/bin/setDefaultWorkspaces.sh"
-exec_always "~/.config/i3/set_keyboard.sh"

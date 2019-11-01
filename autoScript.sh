@@ -1,95 +1,51 @@
 #!/usr/bin/env bash
 
-### connect ssh prerequisites
-# set password passwd
-# check if
-passwd
-nano /etc/ssh/sshd_config # check if PermitRootLogin yes exist and is uncommented
-systemctl start sshd.service
-ip a # for checking ip
-
-
-### disk creation
-fdisk -l
-fdisk /dev/sda
-#	o - wipe everything
-#	1p 50G
-#	a - set as boot
-#	2p 2G
-#	type 82 (swap)
-#	3p
-mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sda3
-
-mkswap /dev/sda2
-swapon /dev/sda2
-
-mount /dev/sda1 /mnt
-mkdir /mnt/boot
-mkdir /mnt/home
-mount /dev/sda3 /mnt/home
-
-
 ### MIRRORS!!!
-nano /etc/pacman.d/mirrorlist # move lithuania and some other to the top
+pacman -S pacman-contrib # helps to order mirror list by openning speeds
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+rankmirrors /etc/pacman.d/mirrorlist > /etc/pacman.d/rankedmirrorlist
+cp /etc/pacman.d/rankedmirrorlist /etc/pacman.d/mirrorlist
+# nano /etc/pacman.d/mirrorlist # move lithuania and some other to the top
 
-pacstrap -i /mnt base
-
-genfstab -U /mnt >> /mnt/etc/fstab
-
-arch-chroot /mnt
-
-pacman -S grub-bios linux-headers linux-lts linux-lts-headers wpa_supplicant wireless_tools
-
+# Time
 ln -sf /usr/share/zoneinfo/Europe/Vilnius /etc/localtime
+
 hwclock --systohc
+sudo pacman -S ntp # for clock synchronization, it really gets off
+
+# Keyboard
 
 # uncomment
-# lt_LT.UTF-8 UTF-8
-# en_US.UTF-8 UTF-8
-nano /etc/locale.gen
-Locale-gen
+echo "lt_LT.UTF-8 UTF-8" >> /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
 
-# localectl set-locale LANG="en_US.UTF-8"
 # and restart - gnome terminal fails to start if it’s not in place
-
+localectl set-locale LANG="en_US.UTF-8"
 
 echo "DagoDragony" >> /etc/hostname
 echo -e '127.0.0.1\tlocalhost' >> /etc/hosts
 echo -e "::1\t\tlocalhost" >> /etc/hosts
 
 
-grub-install --target=i386-pc --recheck /dev/sda
-cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# exit
-umount /mnt/home
-umount /mnt
-
-reboot
-
-
-# setting network back
-ip a
-ip link set dev enp0s25 up # LAN on
-dhcpcd
+### connect ssh prerequisites
+# set password passwd
+# check if
 
 pacman -S openssh
+echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
 systemctl enable sshd.service
-nano /etc/ssh/sshd_config # set PermitRootLogin yes
-
+systemctl start sshd.service
 
 pacman -S intel-ucode
-grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman -S xf86-video-intel
 
 useradd -m -g users -s /bin/bash dago
 Passwd dago
-pacman -S sudo
-nano /etc/sudoers # add  line like root, but not root
 
+pacman -S sudo
+echo "dago ALL=(ALL) ALL" >> /etc/sudoers
 
 sudo pacman -S xorg-xinit
 pacman -Sy gnome gnome-extra
@@ -101,32 +57,37 @@ pacman -Sy archlinux-wallpaper
 # enable internet on boot
 systemctl enable dhcpcd
 
-# set HandleLidSwitch=ignore
-nano /etc/systemd/logind.conf
+echo "HandleLidSwitch=ignore" >> /etc/systemd/logind.conf
+
 # Remove user
-sudo su -
-Userdel dago
-Userdel -r dago # also deletes user home directory and mail spool
+#sudo su -
+#Userdel dago
+#Userdel -r dago # also deletes user home directory and mail spool
+
 # Arch User Repository (AUR)
-sudo nano /etc/pacman.conf
-# add
-[archlinuxfr]
-SigLevel = Never
-Server = http://repo.archlinux.fr/$arch
-#
+echo "[archlinuxfr]" >> /etc/pacman.conf
+echo "SigLevel = Never" >> /etc/pacman.conf
+echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+
 sudo pacman -Sy yaourt
 sudo pacman -S base-devel
 
 yaourt -S slack-desktop
-yaourt -S skypeforlinux-stable-bin
 
 sudo pacman -S jdk8-openjdk
 sudo pacman -S intellij-idea-community-edition
 sudo pacman -S git
 sudo pacman -S chromium
-sudo pacman -S transmission-gtk # torrent client
+
+# deprecated after usage of new system
+# sudo pacman -S transmission-gtk # torrent client
+
+sudo pacman -S transmission-cli
+yaourt -S transmission-remote-cli-git
+
 sudo pacman -S xfce4-goodies # screenshots only
 
+sudo pacman -S compton # transparency stuff
 
 # i3 stuff
 sudo pacman -S i3
@@ -147,28 +108,33 @@ sudo paman -S acpi # batery stats
 sudo pacman -S alsa-utils # sound
 sudo pacman -S extra/pulseaudio-alsa
 
-
+########## FONTS
 # Set font in i3 config
-font pango:System San Francisco Display 10
-https://github.com/supermarin/YosemiteSanFranciscoFont
-Unzip it
-Mv *.ttf ~/.fonts/
+#font pango:System San Francisco Display 10
+
+#curl https://github.com/supermarin/YosemiteSanFranciscoFont --output ~/Downloads/YosemiteSanFranciscoFont
+#Unzip it
+#Mv *.ttf ~/.fonts/
 
 # install font from
-https://github.com/FortAwesome/Font-Awesome/releases
+
+#https://github.com/FortAwesome/Font-Awesome/releases
 # to refreh font cache
-sudo fc-cache -f -v
+#sudo fc-cache -f -v
+
+
+
 
 # setup font in applications
-sudo pacman -S lxappearance
-# go to lxappearance, do any default font action, and .gtkrc-2.0 file will be generated
-Nano .gtkrc-2.0 # chyange gtk-font-name=”System San Francisco Display 13”
-Nano .config/gtk-3.0/settings.ini # gtk-font-name=System San Francisco Display
-https://github.com/bookercodes/setupi3/blob/master/config # for color settings
-sudo pacman -S thunar # basically file explorer
-https://github.com/horst3180/Arc-theme # windows theme
-sudo pacman -S arc-gtk-theme
-# go to lxappearance and select Arc-Dark, apply
+#sudo pacman -S lxappearance
+## go to lxappearance, do any default font action, and .gtkrc-2.0 file will be generated
+#Nano .gtkrc-2.0 # chyange gtk-font-name=”System San Francisco Display 13”
+#Nano .config/gtk-3.0/settings.ini # gtk-font-name=System San Francisco Display
+#https://github.com/bookercodes/setupi3/blob/master/config # for color settings
+#sudo pacman -S thunar # basically file explorer
+#https://github.com/horst3180/Arc-theme # windows theme
+#sudo pacman -S arc-gtk-theme
+## go to lxappearance and select Arc-Dark, apply
 
 
 sudo pacman -S vlc
@@ -179,13 +145,15 @@ systemctl enable tlp-sleep.service
 systemctl mask systemd-rfkill.service
 systemctl mask systemd-rfkill.socket
 # thinkpads only
+
 sudo pacman -S tp_smapi
 sudo pacman -S acpi_call
-# wifi
-Ip link
-ip link set wlp3s0 up
-sudo pacman -S networkmanager
-sudo pacman -S network-manager-applet
+
+## wifi
+#Ip link
+#ip link set wlp3s0 up
+#sudo pacman -S networkmanager
+#sudo pacman -S network-manager-applet
 
 # for desktop picture
 sudo pacman -S feh
@@ -196,7 +164,7 @@ sudo pacman -S ranger
 
 sudo pacman -Syu
 
-I3-msg exit # to logout
+#I3-msg exit # to logout
 
 sudo pacman -S terminator
 
@@ -221,6 +189,9 @@ sudo pacman -S groff
 # customizable browser, easy hotkeys
 # vimium like automatically
 sudo pacman -S qutebrowser
+
+# for printing stuff in qutebrowser
+sudo pacman -S pdfjs
 
 # needed for saving custom i3 layouts
 sudo pacman -S perl-anyevent-i3
@@ -248,5 +219,3 @@ sudo pacman -S texlive-most
 sudo pacman -S xclip
 sudo pacman -S xdotool
 
-# for clock synchronization, it really gets off
-sudo pacman -S ntp
