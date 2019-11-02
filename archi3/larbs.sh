@@ -16,7 +16,7 @@ esac done
 
 # DEFAULTS:
 [ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/DagoDragony/archLinuxConfiguration.git" && repobranch="archi3"
-[ -z "$progsfile" ] && progsfile="https://github.com/DagoDragony/archLinuxConfiguration/blob/master/archi3/software.csv"
+[ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/DagoDragony/archLinuxConfiguration/master/archi3/software.csv"
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
 
