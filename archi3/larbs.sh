@@ -16,7 +16,7 @@ esac done
 
 # DEFAULTS:
 [ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/DagoDragony/archLinuxConfiguration.git" && repobranch="archi3"
-[ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/DagoDragony/archLinuxConfiguration/master/software.csv"
+[ -z "$progsfile" ] && progsfile="https://github.com/DagoDragony/archLinuxConfiguration/blob/master/archi3/software.csv"
 [ -z "$aurhelper" ] && aurhelper="yay"
 [ -z "$repobranch" ] && repobranch="master"
 
@@ -147,7 +147,7 @@ resetpulse() { dialog --infobox "Reseting Pulseaudio..." 4 50
 finalize(){ \
 	dialog --infobox "Preparing welcome message..." 4 50
 	echo "exec_always --no-startup-id notify-send -i ~/.local/share/larbs/larbs.png 'Welcome to LARBS:' 'Press Super+F1 for the manual.' -t 10000"  >> "/home/$name/.config/i3/config"
-	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nTo run the new graphical environment, log out and log back in as your new user, then run the command \"startx\" to start the graphical environment (it will start automatically in tty1).\\n\\n.t Luke" 12 80
+	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden errors, the script completed successfully and all the programs and configuration files should be in place.\\n\\nTo run the new graphical environment, log out and log back in as your new user, then run the command \"startx\" to start the graphical environment (it will start automatically in tty1)" 12 80
 	}
 
 ### THE ACTUAL SCRIPT ###
@@ -202,9 +202,6 @@ installationloop
 # Install the dotfiles in the user's home directory
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
 rm -f "/home/$name/README.md" "/home/$name/LICENSE"
-
-# Install the LARBS Firefox profile in ~/.mozilla/firefox/
-putgitrepo "https://github.com/LukeSmithxyz/mozillarbs.git" "/home/$name/.mozilla/firefox"
 
 # Pulseaudio, if/when initially installed, often needs a restart to work immediately.
 [ -f /usr/bin/pulseaudio ] && resetpulse
