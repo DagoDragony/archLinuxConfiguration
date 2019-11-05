@@ -7,12 +7,11 @@
 ####################################
 
 foldersOutsideHomeDir=(
-  "/etc/X11/xorg.conf.d/10-monitor.conf"
+  "/etc/X11/xorg.conf.d"
 )
 
 foldersToCopyFromHomeDir=(
-  ".fonts",
-  ".config/i3/"
+  ".config/i3"
   ".config/ranger"
   ".config/rofi"
   ".config/qutebrowser"
@@ -22,10 +21,14 @@ foldersToCopyFromHomeDir=(
 
 for path in "${foldersOutsideHomeDir[@]}"
 do
-  rsync --recursive $path configuration/other
+  destination=configuration/other$path
+  mkdir -p $destination
+  rsync --recursive $path/* $destination
 done
 
 for path in "${foldersToCopyFromHomeDir[@]}"
 do
-  rsync --recursive "$HOME/$path" configuration/home
+  destination=configuration/home/$path
+  mkdir -p $destination
+  rsync --recursive --no-links $HOME/$path/* $destination
 done
