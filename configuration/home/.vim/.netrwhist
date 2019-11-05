@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/lib'
+let g:netrw_dirhist_2='/home/dago/.vim'
+let g:netrw_dirhist_3='/home/dago/.config/i3'
+let g:netrw_dirhist_4='/etc/X11/xorg.conf.d'

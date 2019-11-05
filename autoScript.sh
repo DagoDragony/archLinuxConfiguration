@@ -26,19 +26,10 @@ echo -e "::1\t\tlocalhost" >> /etc/hosts
 # check if
 
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
-systemctl enable sshd.service
-systemctl start sshd.service
-
-# gnome terminal fails without gdm
-#systemctl enable gdm.service
-
-# enable internet on boot
-systemctl enable dhcpcd
 
 echo "HandleLidSwitch=ignore" >> /etc/systemd/logind.conf
 
 # Arch User Repository (AUR)
-
 echo "[archlinuxfr]" >> /etc/pacman.conf
 echo "SigLevel = Never" >> /etc/pacman.conf
 echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
@@ -46,6 +37,12 @@ echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
 # to file that is result of
 cp /etc/i3blocks.conf ./
 
+# gnome terminal fails without gdm
+systemctl enable gdm.service
+# enable internet on boot
+systemctl enable dhcpcd
+systemctl enable sshd.service
+systemctl start sshd.service
 systemctl enable tlp.service
 systemctl enable tlp-sleep.service
 systemctl mask systemd-rfkill.service
