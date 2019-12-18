@@ -15,7 +15,7 @@ foldersToCopyFromHomeDir=(
   ".config/ranger"
   ".config/rofi"
   ".config/qutebrowser"
-  ".vim"
+  ".config/nvim"
   "bin"
 )
 
