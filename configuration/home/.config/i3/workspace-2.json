@@ -1,0 +1,45 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "none",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1048,
+       "width": 950,
+       "x": 3840,
+       "y": 4294967278
+    },
+    "name": "archLinuxConfiguration [~/Projects/archLinuxConfiguration] - .../copyConfiguration.sh [archLinuxConfiguration] - IntelliJ IDEA",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "class": "^jetbrains\\-idea\\-ce$",
+       // "instance": "^sun\\-awt\\-X11\\-XFramePeer$",
+       // "title": "^archLinuxConfiguration\\ \\[\\~\\/Projects\\/archLinuxConfiguration\\]\\ \\-\\ \\.\\.\\.\\/copyConfiguration\\.sh\\ \\[archLinuxConfiguration\\]\\ \\-\\ IntelliJ\\ IDEA$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "none",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 600,
+       "width": 800,
+       "x": 50,
+       "y": 50
+    },
+    "name": "i3: Layout saving in i3 - qutebrowser",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "class": "^qutebrowser$",
+       // "instance": "^qutebrowser$",
+       // "title": "^i3\\:\\ Layout\\ saving\\ in\\ i3\\ \\-\\ qutebrowser$"
+       }
+    ],
+    "type": "con"
+}
+
