@@ -7,6 +7,9 @@ set number
 set relativenumber
 set cursorline
 
+set ignorecase
+set smartcase
+
 set noswapfile
 set nobackup
 set nowb
@@ -42,6 +45,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
@@ -62,6 +66,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " bundle for vim that builds off ot the initial scala plugin modules
 Plug 'derekwyatt/vim-scala'
+
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+nmap <leader>n :FZF<cr>
 
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
@@ -200,3 +210,10 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F2> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
+let g:NERDTreeToggle="<F2>"
+let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapPreview="<F4>"

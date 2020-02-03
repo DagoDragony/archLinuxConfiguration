@@ -12,6 +12,7 @@ exec --no-startup-id xcompmgr
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id "~/bin/setDefaultWorkspaces.sh"
 exec --no-startup-id "~/bin/startup"
+exec --no-startup-id qutebrowser --nowindow -R
 # exec "~/bin/hotplug_monitor.sh"
 # i3 config file (v4)
 #
@@ -254,7 +255,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+u	[instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
-bindsym $mod+a	[instance="math"]     scratchpad show; [instance="math"]     move position center
+# bindsym $mod+a	[instance="math"]     scratchpad show; [instance="math"]     move position center
+bindsym $mod+a	[instance="calendar"]     scratchpad show; [instance="calendar"]     move position center
 
 bindsym $mod+Shift+d exec bash ~/.config/rofi/scripts/picker.sh
 
@@ -283,3 +285,9 @@ for_window [instance="math"] move scratchpad
 for_window [instance="math"] border pixel 5
 exec --no-startup-id st -n math -f mono:pixelsize=24 -e R -q
 
+
+for_window [instance="calendar"] floating enable
+for_window [instance="calendar"] resize set 1800 1000 
+for_window [instance="calendar"] move scratchpad
+for_window [instance="calendar"] border pixel 5
+exec --no-startup-id st -n calendar -e 'qutebrowser https://calendar.google.com/calendar/r/'

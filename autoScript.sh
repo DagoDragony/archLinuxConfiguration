@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+pacman -S pacman-contrib # contains rankmirrors app
+
 ### MIRRORS!!!
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 rankmirrors /etc/pacman.d/mirrorlist > /etc/pacman.d/rankedmirrorlist

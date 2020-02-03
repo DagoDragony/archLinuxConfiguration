@@ -3,22 +3,24 @@
 ### disk creation
 fdisk -l
 fdisk /dev/sda
-#	o - wipe everything
-#	1p 50G
-#	a - set as boot
-#	2p 2G
-#	type 82 (swap)
-#	3p
+# 1p +1G for /boot
+# 2p +2G for swap
+#	3p rest for /
+
+
 mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sda3
 
 mkswap /dev/sda2
 swapon /dev/sda2
 
-mount /dev/sda1 /mnt
+cryptsetup -y -v luksFormat /dev/sda3
+cryptsetup open /dev/sda3 cryptroot
+mkfs.ext4 /dev/mapper/cryptroot
+mount /dev/mapper/cryptroot /mnt
+
 mkdir /mnt/boot
-mkdir /mnt/home
-mount /dev/sda3 /mnt/home
+mount /dev/sda1 /mnt/boot
 
 pacstrap -i /mnt base
 
@@ -27,13 +29,22 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ##
 arch-chroot /mnt
 
+pacman -Syy
 # pacman -S grub-bios ???
 #pacman -S wpa_supplicant wireless_tools
 pacman -S linux-headers linux-lts linux-lts-headers
 
-
 pacman -S grub
-grub-install /dev/sda
+
+vi /etc/default/grub
+# add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
+
+vi /etc/mkinitcpio.conf
+# add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
+
+mkinitcpio -p linux-lts
+
+grub-install --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # for internet to be available on next run
@@ -48,6 +59,16 @@ echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 
 # change password
 passwd
+
+pacman -S openssh
+systemctl start sshd
+vim /etc/ssh/sshd_config
+# add "PermitRootLogin yes"
+
+useradd -m dago
+passwd dago
+
+
 
 exit
 
