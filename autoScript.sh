@@ -40,7 +40,8 @@ echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
 cp /etc/i3blocks.conf ./
 
 # gnome terminal fails without gdm
-systemctl enable gdm.service
+#systemctl enable gdm.service # for some reasons it didn't work on new installation
+systemctl enable sddm
 # enable internet on boot
 systemctl enable dhcpcd
 systemctl enable sshd.service
@@ -49,3 +50,22 @@ systemctl enable tlp.service
 systemctl enable tlp-sleep.service
 systemctl mask systemd-rfkill.service
 systemctl mask systemd-rfkill.socket
+
+
+# vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+mkdir ~/Installs
+cd ~/Installs
+git clone https://github.com/LukeSmithxyz/st.git
+cd st
+make
+sudo ln -s -t /usr/local/bin ~/Installs/st/st
+
+intelllijF=ideaIU-2019.3.2.tar.gz
+curl -Lfo ~/Downloads/$intelllijF  https://download.jetbrains.com/idea/$intelllijF
+tar -xf ~/Downloads/$intelllijF -C ~/Installs/
+sudo ln -s -t /usr/local/bin ~/Installs/$intelllijF/bin/idea.sh
+# todo scala plugin
+
