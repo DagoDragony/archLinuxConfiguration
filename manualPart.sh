@@ -9,7 +9,6 @@ fdisk /dev/sda
 
 
 mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sda3
 
 mkswap /dev/sda2
 swapon /dev/sda2
