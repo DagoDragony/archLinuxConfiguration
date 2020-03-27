@@ -8,6 +8,7 @@ foldersOutsideHomeDir=(
 saveDirInHomeDir="configuration/home"
 foldersToCopyFromHomeDir=(
   ".config/i3"
+  ".config/i3blocks"
   ".config/ranger"
   ".config/rofi"
   ".config/qutebrowser"
