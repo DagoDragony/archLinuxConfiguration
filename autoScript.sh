@@ -58,16 +58,17 @@ systemctl mask systemd-rfkill.socket
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-mkdir ~/Installs
 cd ~/Installs
 git clone https://github.com/LukeSmithxyz/st.git
 cd st
 make
 sudo ln -s -t /usr/local/bin ~/Installs/st/st
 
-intelllijF=ideaIU-2019.3.2.tar.gz
-curl -Lfo ~/Downloads/$intelllijF  https://download.jetbrains.com/idea/$intelllijF
-tar -xf ~/Downloads/$intelllijF -C ~/Installs/
-sudo ln -s -t /usr/local/bin ~/Installs/$intelllijF/bin/idea.sh
+# doesn't work, think of a way to know what file was downloaded
+#cd ~/Downloads
+#intellijLink=https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
+#curl -LfO $intellijLink
+#tar -xf ~/Downloads/${intellijLink##*/} -C ~/Installs/
+#sudo ln -s -t /usr/local/bin ~/Installs/$intelllijF/bin/idea.sh
 # todo scala plugin
 
