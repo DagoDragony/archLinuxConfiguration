@@ -7,6 +7,8 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 rankmirrors /etc/pacman.d/mirrorlist > /etc/pacman.d/rankedmirrorlist
 cp /etc/pacman.d/rankedmirrorlist /etc/pacman.d/mirrorlist
 
+mkdir -p $HOME/{Projects,Installs} $HOME/Documents/remoteShare/
+
 # Time
 ln -sf /usr/share/zoneinfo/Europe/Vilnius /etc/localtime
 

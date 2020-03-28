@@ -21,7 +21,7 @@ mount /dev/mapper/cryptroot /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-pacstrap -i /mnt base
+pacstrap -i /mnt base base-devel
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
