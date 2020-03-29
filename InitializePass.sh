@@ -3,6 +3,10 @@ gpg --list-secret-keys
 
 pass init $(read -p "enter gpg-id:" input;echo $input)
 
+pass insert adPass
+pass insert ppPass
+pass insert ad
+
 #gpg --gen-key
 #
 #gpg --list-keys
