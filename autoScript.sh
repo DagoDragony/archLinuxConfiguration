@@ -62,11 +62,15 @@ cd ~/Installs
 git clone https://github.com/LukeSmithxyz/st.git && cd st; make
 sudo ln -s -t /usr/bin ~/Installs/st/st
 
-# doesn't work, think of a way to know what file was downloaded
-#cd ~/Downloads
-#intellijLink=https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
-#curl -LfO $intellijLink
-#tar -xf ~/Downloads/${intellijLink##*/} -C ~/Installs/
-#sudo ln -s -t /usr/local/bin ~/Installs/$intelllijF/bin/idea.sh
+tempFolderName=$(uuidgen -t)
+mkdir -p /tmp/$tempFolderName && cd /tmp/$tempFolderName
+echo $tempFolderName
+intellijLink="https://download.jetbrains.com/idea/ideaIC-2019.3.4.tar.gz"
+curl -LfO $intellijLink
+intellijArchive=$(find . -type f -print -quit)
+tar -xf $intellijArchive
+intellijDir=$(find . -type d -name \*idea\* -print -quit)
+cp -r $intellijDir ~/Installs
+sudo ln -s -t /usr/local/bin ~/Installs/$intellijDir/bin/idea.sh
 # todo scala plugin
 
