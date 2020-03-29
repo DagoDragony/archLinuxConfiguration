@@ -30,7 +30,7 @@ log() {
 
 if [ -z $1 ]
 then
-	cat /home/dago/.config/rofi/scripts/servers
+	cat $HOME/.config/psen/servers
 else
 	log "serverLine: $@"
 	serverLine=($@)
@@ -64,7 +64,7 @@ else
 		log "windows!"
 		domain=$(echo $user | grep -Po "^[^\\\\]*")
 		userName=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
-		sharedFolder="/drive:rdpShare,/home/dago/Documents/remoteShare"
+		sharedFolder="/drive:rdpShare,$HOME/Documents/remoteShare"
 		cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /clipboard /workarea $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
 		log "$cmd"
 		eval $cmd

@@ -59,10 +59,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 cd ~/Installs
-git clone https://github.com/LukeSmithxyz/st.git
-cd st
-make
-sudo ln -s -t /usr/local/bin ~/Installs/st/st
+git clone https://github.com/LukeSmithxyz/st.git && cd st; make
+sudo ln -s -t /usr/bin ~/Installs/st/st
 
 # doesn't work, think of a way to know what file was downloaded
 #cd ~/Downloads
