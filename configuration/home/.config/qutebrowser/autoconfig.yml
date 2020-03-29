@@ -8,7 +8,5 @@ config_version: 2
 settings:
   content.notifications:
     https://calendar.google.com: false
-    https://www.reddit.com: false
   content.register_protocol_handler:
     https://calendar.google.com?cid=%25s: false
-    https://mail.google.com?extsrc=mailto&url=%25s: false

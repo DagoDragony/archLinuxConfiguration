@@ -5,4 +5,4 @@ case $BLOCK_BUTTON in
 	#3) echo "right click action" ;;
 esac
 
-sensors | awk '/^temp1/ {print $2}'
+sensors | awk '/^temp1:/ {print $2}' | head -n  1

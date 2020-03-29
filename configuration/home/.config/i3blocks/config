@@ -36,16 +36,14 @@ command=~/.config/i3blocks/bandwidth3
 interval=persist
 markup=pango
 
-# dfasdfasdf asdfasdfasdf
-# asdfasdfasdfasd
 [memory]
 label=💽
-command=/home/dago/.config/i3blocks/i3mem
+command=$HOME/.config/i3blocks/i3mem
 interval=30
 
 [cpu]
 label=🖥
-command=/home/dago/.config/i3blocks/i3cpu
+command=$HOME/.config/i3blocks/i3cpu
 interval=30
 
 # Volume indicator
