@@ -31,6 +31,11 @@ arch-chroot /mnt
 pacman -Syy
 # pacman -S grub-bios ???
 #pacman -S wpa_supplicant wireless_tools
+
+pacman -S reflector
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
+
 pacman -S linux-headers linux-lts linux-lts-headers
 
 pacman -S grub
