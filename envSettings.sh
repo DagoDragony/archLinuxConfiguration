@@ -17,6 +17,7 @@ foldersToCopyFromHomeDir=(
   ".local/share/applications/torrent.desktop"
   ".config/mimeapps.list"
   ".config/transmission-daemon/settings.json"
+  ".scripts/tools"
 )
 
 function sync_files {

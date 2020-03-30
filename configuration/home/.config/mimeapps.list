@@ -1,0 +1,16 @@
+[Added Associations]
+video/x-matroska=vlc.desktop;mplayer.desktop;
+image/png=ristretto.desktop;
+image/jpeg=gimp.desktop;ristretto.desktop;
+application/x-shellscript=org.gnome.gedit.desktop;
+application/pdf=org.gnome.Evince.desktop;
+application/xml=chromium.desktop;
+
+[Default Applications]
+x-scheme-handler/magnet=torrent.desktop
+application/x-bittorrent=torrent.desktop
+text/html=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
