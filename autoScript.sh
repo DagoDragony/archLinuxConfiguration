@@ -63,6 +63,9 @@ cd ~/Installs
 git clone https://github.com/LukeSmithxyz/st.git && cd st; make
 sudo ln -s -t /usr/bin ~/Installs/st/st
 
+# fix for st not crashing when rendering smileys and similar symbols
+yay libxft-bgra
+
 tempFolderName=$(uuidgen -t)
 mkdir -p /tmp/$tempFolderName && cd /tmp/$tempFolderName
 echo $tempFolderName
