@@ -14,12 +14,20 @@ foldersToCopyFromHomeDir=(
   ".config/qutebrowser"
   ".config/nvim"
   "bin"
+  ".local/share/applications/torrent.desktop"
+  ".config/mimeapps.list"
+  ".config/transmission-daemon/settings.json"
 )
 
 function sync_files {
-  sourceDir=$1/*
-  destinationDir=$2
-  mkdir -p destinationDir
-  echo "$sourceDir $destinationDir"
-  rsync --recursive --no-links $sourceDir $destinationDir
+  source=$1
+  destination=$2
+  mkdir -p $(dirname $destination)
+  if [[ -f $source ]]; then
+    cp $source $destination
+  elif [[ -d $source ]]; then
+    rsync --recursive --no-links $source/* $destination
+  else
+    notify-send "Warning" "Path \"$source\" not found!"
+  fi
 }
