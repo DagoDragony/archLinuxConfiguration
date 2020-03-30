@@ -69,12 +69,11 @@ else
 		log "$cmd"
 		eval $cmd
 	elif [ "L" == $osType ]; then
-		cmd='nohup gnome-terminal -e "bash -c \"sshpass -f <(pass ppPass) ssh -o StrictHostKeyChecking=no $user@$server \"" > /dev/null'
-		log $cmd
+		cmd='nohup st -e bash -c "sshpass -f <(pass ppPass) ssh -o StrictHostKeyChecking=no $user@$server " > /dev/null &'
+		log "$cmd"
 		eval $cmd
 	else
 		log "uknown os type $osType"
 		exit 1
 	fi
-	#nohup gnome-terminal -e "pass $passId | sshpass -f1 ssh -o StrictHostKeyChecking=no $server | while read TEXT; do notify-send \"$TEXT\"; done;"
 fi
