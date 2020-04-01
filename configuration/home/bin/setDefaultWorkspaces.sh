@@ -17,4 +17,4 @@ nohup qutebrowser --target window https://trello.com/b/OEHHMgp2/to-do-factory >/
 sleep 1
 
 i3-msg workspace $workspace3, move workspace to output DP2-3 >/dev/null
-nohup qutebrowser --target window https://trello.com/b/nZ8tLdIA/self-improvement >/dev/null
+nohup qutebrowser --target window https://trello.com/b/33DloaNZ/it  >/dev/null
