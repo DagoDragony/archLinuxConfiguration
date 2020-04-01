@@ -19,7 +19,14 @@ exec --no-startup-id variety
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+# xmodmap
+# mod1        Alt_L (0x40),  Alt_R (0x6c),  Meta_L (0xcd)
+# mod2        Num_Lock (0x4d)
+# mod3
+# mod4        Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+# mod5        ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+# less /usr/include/X11/keysymdef.h
+set $mod Mod4 
 set $alt Mod1
 
 
@@ -47,6 +54,10 @@ floating_modifier $mod
 bindsym $mod+Return exec st 
 bindsym $mod+b exec qutebrowser
 bindsym $mod+c exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/serversConnect.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym $mod+Mod2+KP_2 exec $(variety --trash && notify-send "Variety" "Moved to trash")
+bindsym $mod+Mod2+KP_4 exec $(variety --previous && notify-send "Variety" "Previous")
+bindsym $mod+Mod2+KP_6 exec $(variety --next && notify-send "Variety" "Next")
+bindsym $mod+Mod2+KP_8 exec $(variety --favorite && notify-send "Variety" "Added to favorites")
 
 set $base00 #101218
 set $base01 #1f222d

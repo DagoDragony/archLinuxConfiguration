@@ -65,7 +65,7 @@ else
 		domain=$(echo $user | grep -Po "^[^\\\\]*")
 		userName=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
 		sharedFolder="/drive:rdpShare,$HOME/Documents/remoteShare"
-		cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /clipboard /workarea $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
+		cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /workarea /clipboard $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
 		log "$cmd"
 		eval $cmd
 	elif [ "L" == $osType ]; then
