@@ -1,5 +1,6 @@
 # some need to be ran in super user
 
+cd ~/Downloads/
 curl -sL install-node.now.sh/lts | sh
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
@@ -21,9 +22,10 @@ run in vim
 # coc-settings.json
 
 # coursier - pure scala artifact fetching
+cd ~/Installs/
 curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier --help
 
-./coursier bootstrap \
+sudo ./coursier bootstrap \
   --java-opt -Xss4m \
   --java-opt -Xms100m \
   --java-opt -Dmetals.client=coc.nvim \
@@ -34,4 +36,5 @@ curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier && ./coursier
 
 # after all npm installations
 sudo npm install -g neovim
-
+sudo gem install neovim
+sudo gem environment

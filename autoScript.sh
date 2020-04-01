@@ -54,7 +54,10 @@ systemctl enable tlp-sleep.service
 systemctl mask systemd-rfkill.service
 systemctl mask systemd-rfkill.socket
 
-
+systemctl enable tlp
+# SSD optimization to t
+sudo systemctl enable fstrim.timer;
+sudo systemctl start fstrim.timer
 # vim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

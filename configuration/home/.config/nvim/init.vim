@@ -20,6 +20,8 @@ set scrolloff=3
 set sidescrolloff=5
 
 let mapleader=","
+filetype plugin on
+syntax on
 
 set shell=/bin/bash
 
@@ -67,6 +69,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " bundle for vim that builds off ot the initial scala plugin modules
 Plug 'derekwyatt/vim-scala'
 
+Plug 'vimwiki/vimwiki'
+
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -82,7 +86,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 call plug#end()
 
 
-f hidden is not set, TextEdit might fail.
+" if hidden is not set, TextEdit might fail.
 set hidden
 
 " Some servers have issues with backup files, see #649
@@ -91,6 +95,8 @@ set nowritebackup
 
 " Better display for messages
 set cmdheight=2
+
+
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -217,3 +223,6 @@ silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeToggle="<F2>"
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
+
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
