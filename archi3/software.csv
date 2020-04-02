@@ -86,4 +86,5 @@ A,coursier,"scala dependency resolver"
 ,mplayer,"media player"
 ,linux-firmware,"various firmware, at lest necessary for wifi drivers"
 A,chromium-widevine,"to be able to watch netflix on chromium"
-,tlp,"power management"
+,tlp,"power management",
+,cups,"printing package"
