@@ -88,3 +88,8 @@ A,coursier,"scala dependency resolver"
 A,chromium-widevine,"to be able to watch netflix on chromium"
 ,tlp,"power management",
 ,cups,"printing package"
+,samba,"smbpasswd and others"
+,zsh,"terminal"
+,strace,""
+,zsh-syntax-highlighting,""
+,youtube-dl,""

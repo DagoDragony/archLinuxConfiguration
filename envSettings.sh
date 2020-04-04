@@ -3,6 +3,7 @@
 saveDirOutsideHomeDir="configuration/other"
 foldersOutsideHomeDir=(
   "/etc/X11/xorg.conf.d"
+  "/etc/zsh/zshenv"
 )
 
 saveDirInHomeDir="configuration/home"
@@ -16,8 +17,10 @@ foldersToCopyFromHomeDir=(
   "bin"
   ".local/share/applications/torrent.desktop"
   ".config/mimeapps.list"
-  ".config/transmission-daemon/settings.json"
-  ".scripts/tools"
+#  ".config/transmission-daemon/settings.json"
+  ".config/scripts/tools"
+  ".config/zsh"
+  ".config/aliasrc"
 )
 
 function sync_files {
@@ -27,7 +30,7 @@ function sync_files {
   if [[ -f $source ]]; then
     cp $source $destination
   elif [[ -d $source ]]; then
-    rsync --recursive --no-links $source/* $destination
+    rsync --recursive --no-links $source/ $destination
   else
     notify-send "Warning" "Path \"$source\" not found!"
   fi
