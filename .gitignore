@@ -1,15 +1,3 @@
-build
-logs
-target
 /.idea
-/.idea_modules
-/.classpath
-/.gradle
-/.project
-/.settings
-/RUNNING_PID
 
-/.vscode
-/configuration/home/.config/nvim/autoload/
 /configuration/home/.config/zsh/.zcompdump
-/configuration/home/.config/nvim/autoload/
