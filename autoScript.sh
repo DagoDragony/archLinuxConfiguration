@@ -84,3 +84,4 @@ cp -r $intellijDir ~/Installs
 sudo ln -s -t /usr/local/bin ~/Installs/$intellijDir/bin/idea.sh
 # todo scala plugin
 
+chsh -s /bin/bash
