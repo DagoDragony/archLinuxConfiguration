@@ -1,13 +1,14 @@
-sudo pacman -S networkmanager network-manager-applet
+sudo pacman -S networkmanager network-manager-applet network-manager-sstp
 ip link
 
-sudo systemctl disable dhcpcd@enp1s0.service
+sudo systemctl disable dhcpcd@enp0s31f6
 sudo systemctl disable netctl-auto@wlp1s0.service
 sudo systemctl enable NetworkManager.service
 
 reboot
 
 nm-applet
+nm-connection-editor
 nmcli
 nmtui
 

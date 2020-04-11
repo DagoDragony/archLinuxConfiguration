@@ -59,17 +59,11 @@ call plug#begin(stdpath('data') . '/plugged')
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-
+Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 "A low-contrast vim color scheme base on Seoul Colors
 Plug 'junegunn/seoul256.vim'
-
-" for some reason it highlights various words in red... wrongly
-"Plug 'gabrielelana/vim-markdown'
-"P
-"
 
 " powerline normal/insert/visual/replace colouring
 Plug 'itchyny/lightline.vim'
@@ -81,12 +75,14 @@ Plug 'itchyny/lightline.vim'
 "Plug 'derekwyatt/vim-scala'
 
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/goyo.vim'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 "nmap <leader><tab> <plug>(fzf-maps-n)
 "xmap <leader><tab> <plug>(fzf-maps-x)
 "omap <leader><tab> <plug>(fzf-maps-o)
 "
-"nmap <leader>n :FZF<cr>
+nmap <leader>n :FZF<cr>
 "
 "" Configuration for vim-scala
 "au BufRead,BufNewFile *.sbt set filetype=scala
@@ -234,5 +230,38 @@ set signcolumn=yes
 "let g:NERDTreeToggle="<F2>"
 "let g:NERDTreeMapActivateNode="<F3>"
 "let g:NERDTreeMapPreview="<F4>"
-"
-let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'default', 'ext': '.md'}]
+
+" vim wiki
+"let itWiki = {
+"	'path': '~/Documents/itwiki/',
+"	'syntax': 'markdown',
+"	'ext': '.md'
+"}
+
+
+let itWiki = {}
+let itWiki.path = '~/Documents/itwiki/'
+let itWiki.syntax = 'markdown'
+let itWiki.ext = '.md'
+
+let pWiki = {}
+let pWiki.path = '~/Documents/pwiki/'
+let pWiki.syntax = 'markdown'
+let pWiki.ext = '.md'
+
+let dicWiki = {}
+let dicWiki.path = '~/Documents/dicwiki/'
+let dicWiki.syntax = 'markdown'
+let dicWiki.ext = '.md'
+
+let keysWiki = {}
+let keysWiki.path = '~/Documents/keyswiki/'
+let keysWiki.syntax = 'markdown'
+let keysWiki.ext = '.md'
+
+let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
+
+
+let g:instant_markdown_autostart = 0	" disable autostart
+map <leader>md :InstantMarkdownPreview<CR>

@@ -1,1 +1,3 @@
 ZDOTDIR=$HOME/.config/zsh
+HISTFILE=$HOME/.config/zsh/history
+EDITOR=nvim

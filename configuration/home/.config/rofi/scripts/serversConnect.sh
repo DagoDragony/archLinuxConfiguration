@@ -69,7 +69,7 @@ else
 		log "$cmd"
 		eval $cmd
 	elif [ "L" == $osType ]; then
-		cmd='nohup st -e bash -c "sshpass -f <(pass ppPass) ssh -o StrictHostKeyChecking=no $user@$server " > /dev/null &'
+		cmd="nohup st -e bash -c \"sshpass -f <(pass ppPass) ssh -o StrictHostKeyChecking=no $user@$server \" > /dev/null &"
 		log "$cmd"
 		eval $cmd
 	else

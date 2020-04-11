@@ -1,0 +1,461 @@
+: 1586295473:0;history
+: 1586295475:0;cd
+: 1586295475:0;ls
+: 1586295476:0;man
+: 1586295483:0;history
+: 1586295492:0;cat
+: 1586295497:0;echo one
+: 1586295499:0;echo two
+: 1586295501:0;echo three
+: 1586295504:0;echo four
+: 1586295507:0;echo five
+: 1586295510:0;echo six
+: 1586295512:0;echo seven
+: 1586295515:0;echo eight
+: 1586295517:0;echo nine
+: 1586295520:0;echo ten
+: 1586295522:0;echo eleven
+: 1586295524:0;echo twelve
+: 1586295527:0;echo thirteen
+: 1586295530:0;echo fourteen
+: 1586295533:0;echo fifteen
+: 1586295538:0;echo sixteen
+: 1586295539:0;history
+: 1586295548:0;history 1
+: 1586295589:0;echo one
+: 1586295594:0;fzf
+: 1586295700:0;echo 1
+: 1586295701:0;echo 2
+: 1586295704:0;history
+: 1586339993:0;tremc
+: 1586340013:0;transmission-remote-cli
+: 1586343615:0;cd .config/nvim
+: 1586343616:0;ls
+: 1586343644:0;nvim init.vim
+: 1586343722:0;cd Documents
+: 1586343722:0;ls
+: 1586343734:0;mv dwiki dicwiki
+: 1586347675:0;nvim
+: 1586347741:0;nvim
+: 1586351370:0;transmission-remote-cli
+: 1586355991:0;temc
+: 1586355999:0;tremc
+: 1586356004:0;cd .config/zsh
+: 1586356005:0;ls
+: 1586356010:0;nvim .zshrc
+: 1586356021:0;cd ..
+: 1586356031:0;nvim aliasrc
+: 1586356060:0;tremc
+: 1586365929:0;nvim
+: 1586369529:0;nvim
+: 1586372661:0;nvim $(fzf)
+: 1586372712:0;npm search
+: 1586372736:0;grep -irl react *
+: 1586372739:0;ls
+: 1586372742:0;ls | fzf
+: 1586372817:0;cd ~/.config/zsh
+: 1586372828:0;nvim .zshrc
+: 1586372846:0;cd ..
+: 1586372846:0;ls
+: 1586372850:0;nvim aliasrc
+: 1586372879:0;cd zsh
+: 1586372880:0;ls
+: 1586372886:0;nvim .zshrc
+: 1586373144:0;man bindkey
+: 1586373149:0;bindkey --help
+: 1586373158:0;bindkey
+: 1586373167:0;bindkey -h
+: 1586373174:0;bindkey --help
+: 1586373182:0;bindkey help
+: 1586373590:0;man zsh
+: 1586373606:0;man vi-down-line-or-history
+: 1586375467:0;echo $KEYMAP
+: 1586375487:0;bindkey
+: 1586376156:0;print hello
+: 1586376493:0;nvim
+: 1586376930:0;zsh --version
+: 1586377062:0;echo $ZSH_VERSION
+: 1586377069:0;printenv
+: 1586377092:0;printenv | grep VERSION
+: 1586377107:0;printenv | grep ZSH
+: 1586377661:0;logout
+: 1586377727:0;htop
+: 1586377872:0;man zshmics
+: 1586377874:0;man zshmisc
+: 1586377991:0;if [[ -o login ]]
+: 1586378006:0;if [[ -o login ]];\
+print echo\
+fi
+: 1586378059:0;if [[ -o login ]] then print "echo" fi
+: 1586378066:0;if [[ -o login ]]; then print "echo" fi
+: 1586378070:0;if [[ -o login ]]; then print "echo"; fi
+: 1586378107:0;echo $PS2
+: 1586378111:0;echo $PS1
+: 1586378114:0;echo $PS2
+: 1586378401:0;zsh -f
+: 1586378409:0;man zsh
+: 1586378584:0;cd ~/.config/zsh
+: 1586378589:0;ls -a
+: 1586378600:0;touch .zlogout
+: 1586378606:0;nvim .zlogout
+: 1586378647:0;notify-send "dfas" "dfasd"
+: 1586378650:0;cd .config
+: 1586378651:0;ls
+: 1586378653:0;cd zsh
+: 1586378653:0;ls
+: 1586378655:0;ls -la
+: 1586378663:0;ls
+: 1586378666:0;man zsh
+: 1586378682:0;nvim .zlogout
+: 1586378698:0;logout
+: 1586378776:0;rm .zlogout
+: 1586378925:0;options[aliases]
+: 1586378933:0;aliases
+: 1586378940:0;alias
+: 1586378943:0;aliases
+: 1586379171:0;echo options[aliases]
+: 1586379181:0;echo options
+: 1586379191:0;echo $options
+: 1586379201:0;echo $options[aliasses]
+: 1586379205:0;echo $options[alias]
+: 1586379212:0;echo $options[aliases]
+: 1586379294:0;[[ -o aliases ]]
+: 1586379316:0;if [[ -o aliases ]]; then echo "aliases"; fi
+: 1586379326:0;if [[ -o aliases ]]; then echo "aliases"; else echo "not"; fi
+: 1586380895:0;print -- '$foo is "'$foo'"'
+: 1586380902:0;foo="huoba"
+: 1586380905:0;print -- '$foo is "'$foo'"'
+: 1586381073:0;print *
+: 1586381083:0;$foo='*'
+: 1586381089:0;foo='*'
+: 1586381093:0;print $foo
+: 1586381304:0;!
+: 1586381310:0;echo "one"
+: 1586381312:0;!
+: 1586381319:0;!!
+: 1586381332:0;systemctl status bluetooth
+: 1586381474:0;print /usr/bin/cat
+: 1586381485:0;print cat
+: 1586381553:0;foo=/usr/bin/cat
+: 1586381562:0;print ${foo:h}
+: 1586381566:0;print ${foo:t}
+: 1586381819:0;man zshexpn
+: 1586382516:0;if [[ -o login ]]\
+\
+
+: 1586382524:0;echo $PS2
+: 1586382569:0;PS2=">>%_>"
+: 1586382575:0;if [[ -o login ]]\
+\
+
+: 1586383606:0;echo $MANPATH
+: 1586383620:0;echo $MAILPATH
+: 1586413862:0;nvim .config/zsh/.zshrc
+: 1586413934:0;bash
+: 1586414408:0;man globalprotect
+: 1586414443:0;globalprotect connect -p gate.adform.com -u d.gaizutis
+: 1586414457:0;globalprotect connect -p gp.adform.com -u d.gaizutis
+: 1586450980:0;nvim
+: 1586451203:0;cd Documents
+: 1586451203:0;ls
+: 1586451206:0;cd itwiki
+: 1586451207:0;ls
+: 1586454205:0;echo $path
+: 1586454997:0;echo $PATH
+: 1586455412:0;print -z print -z print This is a line
+: 1586455439:0;print -z print This is a line
+: 1586455440:0;print This is a line
+: 1586455501:0;cd .config/zsh
+: 1586455501:0;ls
+: 1586455505:0;ls -a
+: 1586455509:0;nvim .zshrc
+: 1586455536:0;cd ..
+: 1586455540:0;nvim aliasrc
+: 1586455604:0;print \\\\ 
+: 1586455607:0;print \\ 
+: 1586455611:0;print \\\\ 
+: 1586455613:0;print \\\\\\ 
+: 1586455620:0;print \\\\\\\\ 
+: 1586455626:0;print \
+: 1586455628:0;print \\ 
+: 1586455812:0;:
+: 1586455820:0;: print "hello"
+: 1586456364:0;whence -wm '*'
+: 1586456398:0;whence -wm '*' | less
+: 1586456427:0;whence -wm '*' | grep reserved
+: 1586456434:0;whence -wm '*'
+: 1586456449:0;whence -wm '*' | less
+: 1586456594:0;whence -wm '*' | echo $_
+: 1586456602:0;whence -wm '*' | echo %_
+: 1586456604:0;whence -wm '*' | echo %
+: 1586456609:0;whence -wm '*' | echo $%
+: 1586456631:0;man whence
+: 1586456638:0;whence --help
+: 1586456642:0;whence -h
+: 1586456644:0;whence
+: 1586456649:0;whence -wm
+: 1586456652:0;whence -wm '*'
+: 1586456660:0;whence =asdfasdfasdfasd
+: 1586456825:0;which -p ls
+: 1586456828:0;which ls
+: 1586456864:0;which -a ls
+: 1586456997:0;whence -wm '*' | less
+: 1586457022:0;bash
+: 1586457032:0;whence -wm '*'
+: 1586457032:0;whence
+: 1586457718:0;trap "echo I\\'m trapped." INT
+: 1586457741:0;man trap
+: 1586457745:0;trap --help
+: 1586457755:0;whence -wm '*' | less
+: 1586459007:0;man bindkey
+: 1586459010:0;bindkey --help
+: 1586459433:0;man zsh
+: 1586459444:0;man zshbuiltins
+: 1586459465:0;man zshzle
+: 1586460794:0;cd ~/.config/zsh
+: 1586460798:0;nvim .zshrc
+: 1586460890:0;keymaps
+: 1586460952:0;bindkey
+: 1586461159:0;whence -wm '*' | less
+: 1586461218:0;_zsh_highlight_widget_orig-s0.0000070000-r12529-vi-backward-blank-word
+: 1586461338:0;bindkey -l
+: 1586462117:0;history
+: 1586462250:0;bindkey -M menuselect
+: 1586462350:0;bind -l
+: 1586462353:0;bindkey -l
+: 1586462392:0;bindkey -M commant
+: 1586462394:0;bindkey -M command
+: 1586463745:0;widget
+: 1586463836:0;echo $KEYMAP
+: 1586463846:0;echo KEYMAP
+: 1586463981:0;whence -wm '*' | less
+: 1586464150:0;local
+: 1586464160:0;man local
+: 1586464174:0;local
+: 1586464177:0;local | less
+: 1586464323:0;zle
+: 1586464325:0;man zle
+: 1586464328:0;zle --help
+: 1586464412:0;zle -al
+: 1586464585:0;print $KEYMAP
+: 1586464696:0;print ${KEYMAP}
+: 1586464783:0;zle -N zle-line-init
+: 1586464786:0;print ${KEYMAP}
+: 1586464794:0;man zle
+: 1586464798:0;man zsh
+: 1586464810:0;man zshzle
+: 1586466395:0;fzf
+: 1586467224:0;tremc
+: 1586467262:0;globalprotect disable
+: 1586467284:0;cd Downloads
+: 1586467284:0;ls
+: 1586467308:0;mplayer The.Invisible.Man.2020.WEB-DL.AVC.AC3.LT.EN.LTSub-TRL.mkv
+: 1586501443:0;cd .config/zsh
+: 1586501443:0;ls
+: 1586501449:0;ls -a
+: 1586501453:0;nvim .zshrc
+: 1586506239:0;globalprotect connect -p gp.adform.com -u d.gaizutis
+: 1586508946:0;nm-applet
+: 1586509029:0;sudo pon adform-prod
+: 1586509071:0;globalprotect connect -p gate.adform.com -u d.gaizutis
+: 1586509100:0;sudo poff adform-prod
+: 1586509108:0;sudo pon adform-prod
+: 1586509116:0;globalprotect connect -p gp.adform.com -u d.gaizutis
+: 1586533854:0;globalprotect connect -p gp.adform.com -u d.gaizutis
+: 1586533864:0;globalprotect disable
+: 1586534227:0;globalprotect connect -p gp.adform.com -u d.gaizutis
+: 1586534239:0;nm-applet
+: 1586544452:0;globalprotect disable
+: 1586544475:0;sudo poff adform-prod
+: 1586544506:0;tremc
+: 1586551269:0;nvim
+: 1586552337:0;print ~/*
+: 1586552363:0;print file-<1-10>.dat
+: 1586552417:0;print file-{1-10}.dat
+: 1586552425:0;print file-<1-10>.dat
+: 1586553103:0;repeat 3; do echo "hello" done
+: 1586553108:0;repeat 3; do echo "hello"; done
+: 1586554146:0;\
+
+: 1586554149:0;echo foo<ESC>xba<TAB>w<TAB>
+: 1586554496:0;print this is line one
+: 1586554536:0;print this is line one\
+print This is line two\
+print this is line three
+: 1586554805:0;whence -wm '*' | less
+: 1586555835:0;fzf() { fzf }
+: 1586555837:0;fzf
+: 1586555859:0;fzf_search_files () { command fzf }
+: 1586555865:0;fzf_search_files
+: 1586555877:0;cd .config
+: 1586555879:0;cd zsh
+: 1586555880:0;ls
+: 1586555885:0;nvim .zshrc
+: 1586555941:0;fzf_search_files () { command fzf }
+: 1586556148:0;find . | fzf
+: 1586556166:0;find pwd | fzf
+: 1586556278:0;history -1
+: 1586556283:0;history 1
+: 1586556291:0;history 1 | wc -l
+: 1586556295:0;man history
+: 1586556311:0;history 100
+: 1586556317:0;history 100 | wc -l
+: 1586556322:0;history 10 | wc -l
+: 1586556327:0;history 1 | wc -l
+: 1586556334:0;history 100 | wc -l
+: 1586556337:0;man history
+: 1586556540:0;history
+: 1586556544:0;history 1 | fzf
+: 1586556709:0;df -h
+: 1586556715:0;df
+: 1586556718:0;df -h
+: 1586556762:0;globalprotect disable
+: 1586557133:0;echo history
+: 1586557143:0;echo $(history)
+: 1586559572:0;clear
+: 1586559715:0;man history
+: 1586598482:0;cd .config
+: 1586598482:0;ls
+: 1586598484:0;cd zsh
+: 1586598485:0;ls
+: 1586598488:0;cd plugins
+: 1586598488:0;ls
+: 1586598493:0;cd zsh
+: 1586598499:0;cd fzf
+: 1586598500:0;ls
+: 1586598504:0;nvim fzf.plugin.zsh
+: 1586598832:0;echo $FZF_BASE
+: 1586598873:0;man zsh
+: 1586598907:0;man zshbuiltins 
+: 1586599026:0;man zsh
+: 1586599054:0;man zshall
+: 1586599333:0;man commands
+: 1586599337:0;echo $commands
+: 1586599353:0;echo brew
+: 1586599355:0;echo $brew
+: 1586599499:0;whence -wm '*' | less
+: 1586599744:0;cd .config/zsh/plugins/fzf
+: 1586599744:0;ls
+: 1586599753:0;which $fzf
+: 1586599756:0;which fzf
+: 1586599767:0;ls -la /usr/bin/fzf
+: 1586599786:0;pacman -Ql fzf
+: 1586600000:0;ls
+: 1586600007:0;test -d Downloads
+: 1586600015:0;test -d Downloads && echo true
+: 1586600019:0;test -d Downloadss && echo true
+: 1586600030:0;test -d Downloadss || echo false
+: 1586600062:0;+commands
+: 1586600394:0;print $(foo-bar}
+: 1586600400:0;print ${foo-bar}
+: 1586600427:0;echo $foo
+: 1586600429:0;$foo
+: 1586600449:0;echo $foo
+: 1586600453:0;foo=''
+: 1586600466:0;print ${foo-bar}
+: 1586600754:0;nvim /usr/share/fzf/key-bindings.zsh
+: 1586600983:0;cd ../..
+: 1586600983:0;ls
+: 1586600987:0;nvim .zshrc
+: 1586601099:0;ls
+: 1586601321:0;nvim
+: 1586601441:0;print ${foo-bar}
+: 1586601446:0;print ${foo:-bar}
+: 1586601734:0;print ${foo:=bar}
+: 1586601737:0;echo $foo
+: 1586601806:0;foo=one
+: 1586601810:0;print ${foo:=bar}
+: 1586601815:0;echo $foo
+: 1586601895:0;foo=''
+: 1586601902:0;print ${foo:=bar}
+: 1586601910:0;foo=''
+: 1586601914:0;print ${foo=bar}
+: 1586601921:0;echo $foo
+: 1586601926:0;print ${foo:=bar}
+: 1586601929:0;echo $foo
+: 1586602270:0;echo $#foo
+: 1586602812:0;print ${foo:+bar}
+: 1586602829:0;echo $foo
+: 1586602848:0;print ${foo:+boom}
+: 1586602861:0;foo=one
+: 1586602866:0;print ${foo:+boom}
+: 1586602868:0;echo $foo
+: 1586602933:0;foo=''
+: 1586602936:0;print ${foo:+boom}
+: 1586604273:0;print ${(t)foo} 
+: 1586604328:0;print ${(1:10)goo}
+: 1586604413:0;print ${(1:10)"goo"}
+: 1586604451:0;print ${(1:10::X::Y:)"goo"}
+: 1586604456:0;print ${(1:10::X::Y:)foo}
+: 1586604623:0;print ${(l:10::X::Y:)goo}
+: 1586604658:0;print ${(l:10::X::Y:)foo}
+: 1586604665:0;foo="hello"
+: 1586604667:0;print ${(l:10::X::Y:)foo}
+: 1586604716:0;print ${(l:10::X::X:)foo}
+: 1586604721:0;print ${(l:10::X::Y:)foo}
+: 1586604927:0;foo=one
+: 1586604935:0;print ${(l:10::X::Y:)foo}
+: 1586605059:0;foo=one && print ${(r:l:10::X::Y:)foo}
+: 1586605074:0;foo=one
+: 1586605080:0;print ${(r:l:10::X::Y:)foo}
+: 1586605086:0;print ${(r:l:10::X::Y:)goo}
+: 1586605089:0;print ${(r:l:10::X::Y:)foo}
+: 1586605218:0;foo='abcdefghij'\
+  for (( i = 1; i <= 10; i++ )); do\
+   goo=${foo[1,$i]}\
+   print ${(l:10::X::Y:)goo} ${(r:10::X::Y:)goo}\
+  done
+: 1586605665:0;echo $EDITOR
+: 1586605937:0;nvim
+: 1586606597:0;cd Projects
+: 1586606600:0;ls
+: 1586606612:0;cd kafka-bridge
+: 1586606616:0;cd ..
+: 1586606618:0;cd ~
+: 1586606623:0;cd **
+: 1586606631:0;cd Projects/kafka-bridge/
+: 1586606979:0;kill -9 
+: 1586606984:0;htop
+: 1586606993:0;kill -9 173612 
+: 1586607391:0;fzf --preview 'cat {}'
+: 1586607604:0;fzf --preview 'nvim {}'
+: 1586607613:0;view fasd
+: 1586607724:0;fzf --preview 'nvim {}'
+: 1586608291:0;cd ~/.config
+: 1586608293:0;nvim aliasrc
+: 1586608723:0;#
+: 1586608727:0;echo $e
+: 1586608728:0;e
+: 1586608730:0;$e
+: 1586608906:0;#
+: 1586608913:0;which env
+: 1586608918:0;which nvim
+: 1586608941:0;#
+: 1586608945:0;sudo nvim
+: 1586608962:0;cd /etc/zsh
+: 1586608962:0;ls
+: 1586608968:0;sudo gedit zshenv
+: 1586609008:0;gedit
+: 1586609012:0;#
+: 1586609017:0;sudo gedit zshenv
+: 1586609092:0;sudo vim zshenv
+: 1586609117:0;journalctl -fe
+: 1586609136:0;#
+: 1586609140:0;#)
+: 1586609141:0;#
+: 1586609142:0;#`+\
+#`+
+: 1586609143:0;#
+: 1586609144:0;#`*\
+#`*
+: 1586609154:0;sudo gedit
+: 1586609167:0;cd /etc/zsh
+: 1586609174:0;sudo gedit zshenv
+: 1586609254:0;e
+: 1586609260:0;echo $EDITOR
+: 1586609273:0;vf
+: 1586609326:0;cd .config
+: 1586609328:0;vf
+: 1586609481:0;sc
+: 1586609602:0;se
+: 1586615727:0;./saveConfiguration.sh

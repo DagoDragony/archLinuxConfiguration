@@ -19,7 +19,11 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
+	pm="sudo pacman" \
 	g="git" \
+	gp="git pull" \
+	gcm="git checkout master" \
+	gca="git commit -v -a" \
 	trem="transmission-remote" \
 	tremc="transmission-remote-cli" \
 	YT="youtube-viewer" \
@@ -29,3 +33,5 @@ alias \
 	v="$EDITOR" \
 	p="sudo pacman" \
 
+vf(){ fzf | xargs -r -I % $EDITOR % ;}
+se(){ du -a ~/.config/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}

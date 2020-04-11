@@ -84,4 +84,13 @@ cp -r $intellijDir ~/Installs
 sudo ln -s -t /usr/local/bin ~/Installs/$intellijDir/bin/idea.sh
 # todo scala plugin
 
-chsh -s /bin/bash
+chsh -s /bin/zsh
+
+chsh -S /bin/zsh
+
+# vim-instant-markdown needs
+sudo npm -g install instant-markdown-d
+sudo npm -g install instant-markdown-d@next
+
+sudo pacman -S xdg-utils
+sudo pacman -S nodejs
