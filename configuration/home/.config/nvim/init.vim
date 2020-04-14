@@ -236,11 +236,6 @@ set signcolumn=yes
 "let g:NERDTreeMapActivateNode="<F3>"
 "let g:NERDTreeMapPreview="<F4>"
 
-" remaped, because vim doesn't support shift+enter
-inoremap <C-SPACE> <Esc>:VimwikiReturn 2 2<CR>
-inoremap <CR> <Esc>:VimwikiReturn 1 5<CR>
-
-
 " vim wiki
 "let itWiki = {
 "	'path': '~/Documents/itwiki/',
