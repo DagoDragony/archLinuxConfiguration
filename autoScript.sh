@@ -94,3 +94,5 @@ sudo npm -g install instant-markdown-d@next
 
 sudo pacman -S xdg-utils
 sudo pacman -S nodejs
+
+sudo systemctl enable cronie

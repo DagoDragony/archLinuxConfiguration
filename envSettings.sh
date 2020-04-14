@@ -4,6 +4,7 @@ saveDirOutsideHomeDir="configuration/other"
 foldersOutsideHomeDir=(
   "/etc/X11/xorg.conf.d"
   "/etc/zsh/zshenv"
+  "/var/spool/cron"
 )
 
 saveDirInHomeDir="configuration/home"

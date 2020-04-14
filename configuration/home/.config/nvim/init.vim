@@ -19,6 +19,10 @@ set nowrap
 set scrolloff=3
 set sidescrolloff=5
 
+set tabstop=4
+set softtabstop=0 noexpandtab
+set shiftwidth=4
+
 let mapleader=","
 filetype plugin on
 syntax on
@@ -45,7 +49,7 @@ call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-"Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 "Plug 'tpope/vim-commentary' " minimalistic commentary tool
 
 " Any valid git URL is allowed
@@ -76,7 +80,8 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'chazy/dirsettings'
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 "nmap <leader><tab> <plug>(fzf-maps-n)
 "xmap <leader><tab> <plug>(fzf-maps-x)
@@ -231,6 +236,11 @@ set signcolumn=yes
 "let g:NERDTreeMapActivateNode="<F3>"
 "let g:NERDTreeMapPreview="<F4>"
 
+" remaped, because vim doesn't support shift+enter
+inoremap <C-SPACE> <Esc>:VimwikiReturn 2 2<CR>
+inoremap <CR> <Esc>:VimwikiReturn 1 5<CR>
+
+
 " vim wiki
 "let itWiki = {
 "	'path': '~/Documents/itwiki/',
@@ -265,3 +275,5 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 
 let g:instant_markdown_autostart = 0	" disable autostart
 map <leader>md :InstantMarkdownPreview<CR>
+
+
