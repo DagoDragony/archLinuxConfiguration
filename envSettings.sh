@@ -18,8 +18,8 @@ foldersToCopyFromHomeDir=(
   "bin"
   ".local/share/applications/torrent.desktop"
   ".config/mimeapps.list"
-#  ".config/transmission-daemon/settings.json"
-  ".config/scripts/tools"
+  ".config/transmission-daemon/settings.json"
+  ".config/scripts"
   ".config/zsh"
   ".config/aliasrc"
 )
