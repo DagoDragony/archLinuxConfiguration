@@ -243,24 +243,23 @@ set signcolumn=yes
 "	'ext': '.md'
 "}
 
-
-let itWiki = {}
-let itWiki.path = '~/Documents/itwiki/'
-let itWiki.syntax = 'markdown'
-let itWiki.ext = '.md'
-
 let pWiki = {}
-let pWiki.path = '~/Documents/pwiki/'
+let pWiki.path = '~/Documents/vimwiki/pwiki'
 let pWiki.syntax = 'markdown'
 let pWiki.ext = '.md'
 
+let itWiki = {}
+let itWiki.path = '~/Documents/vimwiki/itwiki/it'
+let itWiki.ext = '.md'
+let itWiki.syntax = 'markdown'
+
 let dicWiki = {}
-let dicWiki.path = '~/Documents/dicwiki/'
+let dicWiki.path = '~/Documents/vimwiki/itwiki/dic'
 let dicWiki.syntax = 'markdown'
 let dicWiki.ext = '.md'
 
 let keysWiki = {}
-let keysWiki.path = '~/Documents/keyswiki/'
+let keysWiki.path = '~/Documents/vimwiki/itwiki/keys'
 let keysWiki.syntax = 'markdown'
 let keysWiki.ext = '.md'
 

@@ -1,2 +1,3 @@
 * * * * * who | systemd-cat
 1 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) notify-send Hey "this is dog!"
+10 * * * * autocommitGitRepos "$HOME/Documents/vimwiki/"
