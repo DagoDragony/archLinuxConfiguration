@@ -88,3 +88,4 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source $HOME/.config/zsh/plugins/systemd/systemd.plugin.zsh
 source $HOME/.config/zsh/plugins/fzf/fzf.plugin.zsh
+source $HOME/.config/zsh/plugins/forgit/forgit.plugin.zsh

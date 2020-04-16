@@ -4,6 +4,8 @@
 # script that auto commits in specified folder repos  #
 #######################################################
 
+echo "$0" | systemd-cat
+
 gitSyncDir=$1
 
 pullRepo() {
