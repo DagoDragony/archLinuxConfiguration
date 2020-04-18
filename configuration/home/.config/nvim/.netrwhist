@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/dago/.config/nvim/UltiSnips'
+let g:netrw_dirhist_2='/home/dago/.config/i3'
+let g:netrw_dirhist_1='/home/dago/bin'
