@@ -24,7 +24,6 @@ set softtabstop=0 noexpandtab
 set shiftwidth=4
 
 let mapleader=","
-filetype plugin on
 syntax on
 
 set shell=/bin/bash
@@ -78,10 +77,13 @@ Plug 'itchyny/lightline.vim'
 " bundle for vim that builds off ot the initial scala plugin modules
 "Plug 'derekwyatt/vim-scala'
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
 Plug 'chazy/dirsettings'
-"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+
 
 "nmap <leader><tab> <plug>(fzf-maps-n)
 "xmap <leader><tab> <plug>(fzf-maps-x)
@@ -265,9 +267,19 @@ let keysWiki.ext = '.md'
 
 let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
+let g:vimwiki_table_mappings=0
 
 
 let g:instant_markdown_autostart = 0	" disable autostart
 map <leader>md :InstantMarkdownPreview<CR>
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"  " use <Tab> trigger autocompletion
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
+filetype on
+filetype plugin on
+filetype indent on

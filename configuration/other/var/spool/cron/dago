@@ -1,2 +1,2 @@
 * * * * * who | systemd-cat
-*/10 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) $HOME/.config/scripts/autocommitGitRepos "$HOME/Documents/vimwiki/"; 
+1 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) $HOME/.config/scripts/autocommitGitRepos "$HOME/Documents/vimwiki/"; 
