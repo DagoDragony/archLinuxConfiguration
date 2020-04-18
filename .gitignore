@@ -3,3 +3,5 @@
 /configuration/home/.config/zsh/.zcompdump
 /configuration/home/.config/nvim/.netrwhist
 /configuration/home/.config/qutebrowser/bookmarks/urls
+/configuration/home/.config/qutebrowser/autoconfig.yml
+/configuration/home/.config/zsh/plugins/forgit/

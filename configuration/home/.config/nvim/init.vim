@@ -269,7 +269,7 @@ let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 let g:vimwiki_table_mappings=0
 
-
+let g:vimwiki_hl_headers = 1
 let g:instant_markdown_autostart = 0	" disable autostart
 map <leader>md :InstantMarkdownPreview<CR>
 
