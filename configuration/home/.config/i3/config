@@ -55,6 +55,9 @@ floating_modifier $mod
 bindsym $mod+Return exec st 
 bindsym $mod+b exec qutebrowser
 bindsym $mod+c exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/serversConnect.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym $mod+d exec  "PATH=$PATH:$HOME/.config/scripts;export PATH;rofi -show run active -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym $mod+Shift+d exec bash ~/.config/rofi/scripts/picker.sh
+bindsym Control+$alt+d exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/keysAndCommands.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
 bindsym $mod+Mod2+KP_2 exec $(variety --trash && notify-send "Variety" "Moved to trash")
 bindsym $mod+Mod2+KP_4 exec $(variety --previous && notify-send "Variety" "Previous")
 bindsym $mod+Mod2+KP_6 exec $(variety --next && notify-send "Variety" "Next")
@@ -90,10 +93,6 @@ set $urgent-bg-color     #E53935
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec  "PATH=$PATH:$HOME/.config/scripts;export PATH;rofi -show run active -theme /usr/share/rofi/themes/arthur.rasi"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -246,6 +245,7 @@ bar {
 
 
 bindsym $mod+Escape exec --no-startup-id i3lock -c 222222
+bindsym $mod+Shift+Escape exec poweroff
 # bindsym $ctrl+b exec qutebrowser
 bindsym --release Shift+Print exec xfce4-screenshooter -rc
 
@@ -271,7 +271,6 @@ bindsym $mod+u	[instance="dropdown"] scratchpad show; [instance="dropdown"] move
 # bindsym $mod+a	[instance="math"]     scratchpad show; [instance="math"]     move position center
 bindsym $mod+a	[instance="calendar"]     scratchpad show; [instance="calendar"]     move position center
 
-bindsym $mod+Shift+d exec bash ~/.config/rofi/scripts/picker.sh
 
 default_border none
 hide_edge_borders both
