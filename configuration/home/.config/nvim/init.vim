@@ -94,7 +94,6 @@ nmap <esc> :noh<cr>
 " Initialize plugin system
 call plug#end()
 
-
 " if hidden is not set, TextEdit might fail.
 set hidden
 

@@ -38,3 +38,5 @@ sudo ./coursier bootstrap \
 sudo npm install -g neovim
 sudo gem install neovim
 sudo gem environment
+
+:CocInstall coc-vimlsp

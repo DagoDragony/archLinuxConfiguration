@@ -31,6 +31,12 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
+	sbtDependencyTree="sbt dependencyTree | less -R" \
+	sbtDependencyBrowseGraph="sbt dependencyBrowseGraph" \
+	sbtDependencyBrowseTree="sbt dependencyBrowseTree" \
+	sbtDependencyStats="sbt dependencyStats | less -R" \
+	sbtWhatDependsOn="print -z 'sbt \"whatDependsOn com.google.protobuf protobuf-java\"'" 
+
 
 vf(){ fzf | xargs -r -I % $EDITOR % ;}
 #se(){ du -a ~/.config/ | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
