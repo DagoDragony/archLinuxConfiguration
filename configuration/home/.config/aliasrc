@@ -33,4 +33,5 @@ alias \
 	p="sudo pacman" \
 
 vf(){ fzf | xargs -r -I % $EDITOR % ;}
-se(){ du -a ~/.config/ | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+#se(){ du -a ~/.config/ | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+se(){ find ~/.config/ -type f | fzf | xargs -r $EDITOR ;}

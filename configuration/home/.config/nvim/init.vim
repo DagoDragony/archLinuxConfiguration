@@ -254,9 +254,15 @@ let keysWiki.path = '~/Documents/vimwiki/itwiki/keys'
 let keysWiki.syntax = 'markdown'
 let keysWiki.ext = '.md'
 
-let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki]
+let devWiki = {}
+let devWiki.path = '~/Documents/vimwiki/itwiki/dev'
+let devWiki.syntax = 'markdown'
+let devWiki.ext = '.md'
+
+let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
-"let g:vimwiki_table_mappings=0
+" for snippets to work with tab
+let g:vimwiki_table_mappings=0
 
 let g:vimwiki_hl_headers = 1
 let g:instant_markdown_autostart = 0	" disable autostart
