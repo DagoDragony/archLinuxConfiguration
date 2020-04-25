@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+##############################################
+#  commits and pushes changes in given repo  #
+##############################################
+
+scriptName=${0:t}
+syncDir=$1
+
+push() {
+	git add .
+	git commit -m 'vim autocommit' | systemd-cat
+	git push | systemd-cat
+	notify-send "$scriptName" "Succesfully pushed $syncDir"
+}
+
+[[ -z "$syncDir" ]] && { echo "No path passed!" 1>&2; exit 1 }
+[[ -d "$syncDir" ]] || { echo "Bad path passed \"$syncDir\"" 1>&2; exit 1 }
+
+cd $syncDir
+# checks if git has any changes to commit
+git diff-index --quiet HEAD -- || push 

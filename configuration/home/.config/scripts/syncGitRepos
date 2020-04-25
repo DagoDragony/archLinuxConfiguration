@@ -1,23 +1,44 @@
 #!/bin/zsh
 
-#######################################################
-# script that pull all repos in specified folder      #
-#######################################################
+############################
+#  synchronizes git repos  #
+############################
 
-gitSyncDir=$1
+scriptName=${0:t}
 
-pullRepo() {
-	typeset syncDir=$1
-	cd $syncDir
-	tsp "cd $syncDir; git pull"
+usage() { 
+	echo "Usage: $scriptName -a <pull|push> -r <repositoriesFolder>" 1>&2
+	echo ""
+	echo "example: $scriptName -a pull -r ~/Documents/wiki" 1>&2
+	exit 1
 }
 
-if [[ -d $gitSyncDir ]]; then
-	cd $gitSyncDir
-	set -A dirs $(ls -d $PWD/*)
-	for syncDir in $dirs; pullRepo "$syncDir";
-else
-	echo "Bad path passed $gitSyncDir" 1>&2
-	exit 1
-fi
+while getopts ":r:a:" o; do
+	case "${o}" in
+		r)
+			gitReposDir=${OPTARG}
+			;;
+		a)
+			action=${OPTARG}
+			[[ $action == "push" || $action == "pull" ]] || usage
+			;;
+		*)
+			usage
+			;;
+	esac
+done
 
+[[ -z "$gitReposDir" || -z "$action" ]] && usage
+[[ ! -d $gitReposDir ]] && (echo "Bad path passed $gitSyncDir" 1>&2; exit 1)
+
+cd $gitReposDir
+set -A dirs $(ls -d $PWD/*)
+
+case "$action" in
+	pull)
+		for syncDir in $dirs; tsp zsh -c "syncGitPull \"$syncDir\""
+		;;
+	push)
+		for syncDir in $dirs; tsp zsh -c "syncGitPush \"$syncDir\""
+		;;
+esac

@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+#######################################
+#  pull repositories of a given repo  #
+#######################################
+
+scriptName=${0:t}
+syncDir=$1
+
+pull() {
+	git pull | systemd-cat
+	notify-send "$scriptName" "Succesfully pulled $syncDir"
+}
+
+[[ -z "$syncDir" ]] && { echo "No path passed!" 1>&2; exit 1 }
+[[ -d "$syncDir" ]] || { echo "Bad path passed \"$syncDir\"" 1>&2; exit 1 }
+
+cd $syncDir
+pull

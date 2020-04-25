@@ -69,7 +69,10 @@ set $base01 #1f222d
 set $base02 #252936
 set $base03 #7780a1
 set $base04 #C0C5CE
-set $base05 #d1d4e0 set $base06 #C9CCDB set $base07 #ffffff set $base08 #ee829f
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
 set $base09 #f99170
 set $base0A #ffefcc
 set $base0B #a5ffe1

@@ -23,6 +23,25 @@ set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
 
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
 let mapleader=","
 syntax on
 
@@ -37,17 +56,18 @@ endif
 
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
-
-" Make sure you use single quotes
+"! Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-"Plug 'tpope/vim-commentary' " minimalistic commentary tool
+Plug 'tpope/vim-commentary' " minimalistic commentary tool
 
 " Any valid git URL is allowed
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 Plug 'tpope/vim-surround'
+" acynchronous grep with some additions
+Plug 'mhinz/vim-grepper'
 
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -79,6 +99,11 @@ Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
 Plug 'chazy/dirsettings'
 
+"autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" Initialize plugin system
+call plug#end()
+
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -87,31 +112,6 @@ omap <leader><tab> <plug>(fzf-maps-o)
 nmap <leader>n :FZF<cr>
 
 nmap <esc> :noh<cr>
-
-
-"autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" Initialize plugin system
-call plug#end()
-
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -258,7 +258,13 @@ let devWiki.path = '~/Documents/vimwiki/itwiki/dev'
 let devWiki.syntax = 'markdown'
 let devWiki.ext = '.md'
 
-let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki]
+let otherWiki = {}
+let otherWiki.path = '~/Documents/vimwiki/other'
+let otherWiki.syntax = 'markdown'
+let otherWiki.ext = '.md'
+
+
+let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " for snippets to work with tab
 let g:vimwiki_table_mappings=0
@@ -282,6 +288,19 @@ let g:easy_align_delimiters = {
 \ '#': { 'pattern': '#\+' },
 \ '"': { 'pattern': '\"\+' },
 \ }
+
+let g:grepper = {}
+let g:grepper.tools = ['grep', 'git', 'rg']
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+nnoremap <Leader>F :Grepper<CR>
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" Quickfix
+nmap [q :cprevious<CR>
+nmap ]q :cnext<CR>
 
 filetype on
 filetype plugin on
