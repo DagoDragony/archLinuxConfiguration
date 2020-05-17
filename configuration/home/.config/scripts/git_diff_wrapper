@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+echo "nvim -d $1 $2" | systemd-cat
+
+# why without > /dev/tty it fucks up everything?
+nvim -d "$1" "$2" > /dev/tty

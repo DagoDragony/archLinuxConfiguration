@@ -60,20 +60,30 @@ else
 		done
 	fi
 
-	if [ "W" == $osType ]; then
-		log "windows!"
-		domain=$(echo $user | grep -Po "^[^\\\\]*")
-		userName=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
-		sharedFolder="/drive:rdpShare,$HOME/Documents/remoteShare"
-		cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /workarea /clipboard $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
-		log "$cmd"
-		eval $cmd
-	elif [ "L" == $osType ]; then
-		cmd="nohup st -e bash -c \"sshpass -f <(pass ppPass) ssh -o StrictHostKeyChecking=no $user@$server \" > /dev/null &"
-		log "$cmd"
-		eval $cmd
-	else
-		log "uknown os type $osType"
-		exit 1
-	fi
+	case $osType in
+		"W")
+			log "windows!"
+			domain=$(echo $user | grep -Po "^[^\\\\]*")
+			userName=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
+			sharedFolder="/drive:rdpShare,$HOME/Documents/remoteShare"
+			cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /workarea /clipboard $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
+			log "$cmd"
+			eval $cmd
+			;;
+		"L")
+			cmd="nohup st -e bash -c \"sshpass -f <(pass $passId) ssh -o StrictHostKeyChecking=no $user@$server \" > /dev/null &"
+			log "$cmd"
+			eval $cmd
+			;;
+		"V")
+			cmd="nohup st -e bash -c \"vncviewer -passwd <(pass $passId | vncpasswd -f) $server \" > /dev/null &"
+			log "$cmd"
+			eval $cmd
+			;;
+		*)
+			log "Unknown type of connection: $osType"
+			exit 1
+			;;
+	esac
+
 fi

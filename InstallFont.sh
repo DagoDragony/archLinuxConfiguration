@@ -13,4 +13,5 @@ cd ~/Downloads
 curl -O $downloadUrl
 mkdir -p $outputDirectory
 sudo unzip $zipFileName -d $outputDirectory
+sudo chmod -R 755 $outputDirectory/*
 fc-cache -vf

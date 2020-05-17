@@ -9,7 +9,7 @@ alias \
 	mv="mv -iv" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
+	yt="youtube-dl --add-metadata -i"
 
 # Colorize commands when possible.
 alias \
@@ -37,7 +37,6 @@ alias \
 	sbtDependencyStats="sbt dependencyStats | less -R" \
 	sbtWhatDependsOn="print -z 'sbt \"whatDependsOn com.google.protobuf protobuf-java\"'" 
 
-
 vf(){ fzf | xargs -r -I % $EDITOR % ;}
-#se(){ du -a ~/.config/ | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
 se(){ find ~/.config/ -type f | fzf | xargs -r $EDITOR ;}
+sev(){ searchVim $1 }

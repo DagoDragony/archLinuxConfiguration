@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+[[ -z $1 ]] && { echo "missing search phrase!"; exit 1 }
+
+vimRuntimePaths=(
+	~/.local/share/nvim/plugged
+	~/.config/nvim/
+)
+
+# find $vimRuntimePaths -type f | fzf | xargs -r $EDITOR
+rg --line-number $1 $vimRuntimePaths | fzf | awk -F ":" '{ print "+" $2 " " $1}' | xargs -r $EDITOR

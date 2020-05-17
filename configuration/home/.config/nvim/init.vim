@@ -1,3 +1,5 @@
+let mapleader=","
+
 set nocompatible
 
 set history=1000
@@ -42,8 +44,11 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-let mapleader=","
 syntax on
+
+filetype on
+filetype plugin on
+filetype indent on
 
 set shell=/bin/zsh
 
@@ -56,60 +61,70 @@ endif
 
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
-"! Make sure you use single quotes
+	"! Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-commentary' " minimalistic commentary tool
+	" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+	Plug 'junegunn/vim-easy-align'
+	Plug 'tpope/vim-commentary' " minimalistic commentary tool
 
-" Any valid git URL is allowed
-"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+	" Any valid git URL is allowed
+	"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-Plug 'tpope/vim-surround'
-" acynchronous grep with some additions
-Plug 'mhinz/vim-grepper'
+	Plug 'tpope/vim-surround'
+	" acynchronous grep with some additions
+	Plug 'mhinz/vim-grepper'
 
-" On-demand loading
-Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+	" On-demand loading
+	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+	" Plugin outside ~/.vim/plugged with post-update hook
+	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
 
-"A low-contrast vim color scheme base on Seoul Colors
-Plug 'junegunn/seoul256.vim'
+	"A low-contrast vim color scheme base on Seoul Colors
+	Plug 'junegunn/seoul256.vim'
 
-" powerline normal/insert/visual/replace colouring
-Plug 'itchyny/lightline.vim'
+	" powerline normal/insert/visual/replace colouring
+	Plug 'itchyny/lightline.vim'
+	Plug 'tpope/vim-fugitive'
 
-" lsp client, idea stuff
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+	" lsp client, idea stuff
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
-" bundle for vim that builds off ot the initial scala plugin modules
-Plug 'derekwyatt/vim-scala'
+	" bundle for vim that builds off ot the initial scala plugin modules
+	Plug 'derekwyatt/vim-scala'
+
+
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+
+	Plug 'vimwiki/vimwiki'
+	Plug 'junegunn/goyo.vim'
+	Plug 'chazy/dirsettings'
+
+	"autocmd FileType json syntax match Comment +\/\/.\+$+
+
+	" Initialize plugin system
+call plug#end()
+
 
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-Plug 'vimwiki/vimwiki'
-Plug 'junegunn/goyo.vim'
-Plug 'chazy/dirsettings'
-
-"autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" Initialize plugin system
-call plug#end()
-
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 nmap <leader>n :FZF<cr>
+nmap <leader>m :Rg<cr>
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+
+" Advanced customization using Vim function
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 nmap <esc> :noh<cr>
 
@@ -183,29 +198,16 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` to fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" Trigger for code actions
+" Make sure `"codeLens.enable": true` is set in your coc config
+nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
@@ -222,6 +224,38 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Notify coc.nvim that <enter> has been pressed.
+" Currently used for the formatOnType feature.
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Toggle panel with Tree Views
+nnoremap <silent> <space>t :<C-u>CocCommand metals.tvp<CR>
+" Toggle Tree View 'metalsBuild'
+nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
+" Toggle Tree View 'metalsCompile'
+nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
+" Reveal current current class (trait or object) in Tree View 'metalsBuild'
+nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsBuild<CR>
+
+" had to remove <leader>ws mapping from VimwikiUISelect
+" nunmap doesn't work
+" if mapping to command already exist, tasklist won't register new mappings
+nmap <leader><leader><leader> <Plug>VimwikiUISelect
+nmap <leader>ws <Plug>(coc-metals-expand-decoration)
+
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
 
 map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
@@ -263,8 +297,13 @@ let otherWiki.path = '~/Documents/vimwiki/other'
 let otherWiki.syntax = 'markdown'
 let otherWiki.ext = '.md'
 
+let investmentWiki = {}
+let investmentWiki.path = '~/Documents/vimwiki/investment'
+let investmentWiki.syntax = 'markdown'
+let investmentWiki.ext = '.md'
 
-let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki]
+
+let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki, investmentWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " for snippets to work with tab
 let g:vimwiki_table_mappings=0
@@ -290,7 +329,7 @@ let g:easy_align_delimiters = {
 \ }
 
 let g:grepper = {}
-let g:grepper.tools = ['grep', 'git', 'rg']
+let g:grepper.tools = ['grep', 'rg', 'git']
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 nnoremap <Leader>F :Grepper<CR>
@@ -302,6 +341,3 @@ xmap gs <plug>(GrepperOperator)
 nmap [q :cprevious<CR>
 nmap ]q :cnext<CR>
 
-filetype on
-filetype plugin on
-filetype indent on

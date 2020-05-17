@@ -36,7 +36,9 @@ sudo ./coursier bootstrap \
 
 # after all npm installations
 sudo npm install -g neovim
+sudo npm install -g find-java-home
 sudo gem install neovim
 sudo gem environment
 
 :CocInstall coc-vimlsp
+:CocInstall coc-clangd

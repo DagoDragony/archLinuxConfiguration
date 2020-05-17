@@ -1,1 +1,1 @@
-* * * * * . $HOME/.profile; $HOME/.config/scripts/syncGitRepos -a push -r "$HOME/Documents/vimwiki/"; 
+1 * * * * . $HOME/.profile; $HOME/.config/scripts/syncGitRepos -a push -r "$HOME/Documents/vimwiki/"; 
