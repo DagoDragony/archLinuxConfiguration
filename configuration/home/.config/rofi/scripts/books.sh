@@ -8,7 +8,7 @@ booksFolder="$HOME/Documents/books/"
 
 if [ -z $1 ]
 then
-	ls $booksFolder
+	ls -tu $booksFolder
 else
 	coproc (zathura "$booksFolder/$1" &)
 fi

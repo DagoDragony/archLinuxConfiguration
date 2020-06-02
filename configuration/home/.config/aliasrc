@@ -19,6 +19,7 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
+	ll="ls -la" \
 	pm="sudo pacman" \
 	g="git" \
 	gp="git pull" \

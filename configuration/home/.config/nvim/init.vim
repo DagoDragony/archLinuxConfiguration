@@ -8,6 +8,7 @@ set hidden
 set number
 set relativenumber
 set cursorline
+set clipboard=unnamedplus
 
 set ignorecase
 set smartcase
@@ -297,13 +298,13 @@ let otherWiki.path = '~/Documents/vimwiki/other'
 let otherWiki.syntax = 'markdown'
 let otherWiki.ext = '.md'
 
-let investmentWiki = {}
-let investmentWiki.path = '~/Documents/vimwiki/investment'
-let investmentWiki.syntax = 'markdown'
-let investmentWiki.ext = '.md'
+let investWiki = {}
+let investWiki.path = '~/Documents/vimwiki/investwiki'
+let investWiki.syntax = 'markdown'
+let investWiki.ext = '.md'
 
 
-let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki, investmentWiki]
+let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki, investWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " for snippets to work with tab
 let g:vimwiki_table_mappings=0

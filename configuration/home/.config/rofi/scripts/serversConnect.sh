@@ -35,9 +35,10 @@ else
 	log "serverLine: $@"
 	serverLine=($@)
 
-	if [ ${serverLine[2]} == "pr" ] || [ ${serverLine[2]} == "pp" ]; then
-		nmcli con show --active | grep -i Production > /dev/null || (notify-send --urgency=critical "Production vpn is needed for ${serverLine[2]}"; exit 1)
-	fi
+	# prod vpn check
+	# if [ ${serverLine[2]} == "pr" ] || [ ${serverLine[2]} == "pp" ]; then
+	# 	nmcli con show --active | grep -i Production > /dev/null || (notify-send --urgency=critical "Production vpn is needed for ${serverLine[2]}"; exit 1)
+	# fi
 
 	#echo "first is: ${serverLine[1]}"
 	osType=${serverLine[0]}

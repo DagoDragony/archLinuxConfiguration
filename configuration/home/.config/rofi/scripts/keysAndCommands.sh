@@ -9,7 +9,7 @@ scripts="$HOME/.config/scripts"
 
 if [ -z $1 ]
 then
-	cat $cmdAndKeysInfoDir/* $scripts/* | grep -v "^$" | grep -v "^\`" | grep -v "^#" | grep -v "^\["
+	cat $cmdAndKeysInfoDir/* $scripts/* | grep -v "^$" | grep -v "^\`" | grep -v "^#[^!]" | grep -v "^\[" | uniq
 else
 	# filter option is complication, however, without it xclip hangs
 	# echo "$(echo "foo" | xclip -selection clipboard)" # hangs
