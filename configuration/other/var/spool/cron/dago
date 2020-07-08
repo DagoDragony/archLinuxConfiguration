@@ -1,1 +1,5 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
 1 * * * * . $HOME/.profile; $HOME/.config/scripts/syncGitRepos -a push -r "$HOME/Documents/vimwiki/"; 

@@ -96,3 +96,27 @@ sudo pacman -S xdg-utils
 sudo pacman -S nodejs
 
 sudo systemctl enable cronie
+/sbin/hwclock --systohc # coud be  added to cron.daily
+
+systemctl start logwatch.timer
+systemctl enable logwatch.timer
+
+rkhunter --propupd
+
+systemctl start sendmail
+systemctl enable sendmail
+
+systemctl start atd
+systemctl enable atd
+
+systemctl enable sysstat # for sar stats collecting
+systemctl start  sysstat
+
+# docker configuration
+# dockd --config docked # captures docked configuration and saves it’s
+# dockd --config undocked # saves undocked configuration
+# for dockd
+systemctl enable acpid
+systemctl start acpid
+
+

@@ -9,7 +9,9 @@ alias \
 	mv="mv -iv" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i"
+	yt="youtube-dl --add-metadata -i" \
+	less="less --IGNORE-CASE -R" \
+	yay="yay --color=always"
 
 # Colorize commands when possible.
 alias \
@@ -20,7 +22,7 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
 	ll="ls -la" \
-	pm="sudo pacman" \
+	pm="sudo pacman --color=always" \
 	g="git" \
 	gp="git pull" \
 	gcm="git checkout master" \
@@ -36,7 +38,8 @@ alias \
 	sbtDependencyBrowseGraph="sbt dependencyBrowseGraph" \
 	sbtDependencyBrowseTree="sbt dependencyBrowseTree" \
 	sbtDependencyStats="sbt dependencyStats | less -R" \
-	sbtWhatDependsOn="print -z 'sbt \"whatDependsOn com.google.protobuf protobuf-java\"'" 
+	sbtWhatDependsOn="print -z 'sbt \"whatDependsOn com.google.protobuf protobuf-java\"'" \
+	newscalaproject="echo $1"
 
 vf(){ fzf | xargs -r -I % $EDITOR % ;}
 se(){ find ~/.config/ -type f | fzf | xargs -r $EDITOR ;}

@@ -4,7 +4,6 @@ set nocompatible
 
 set history=1000
 set autoread
-set hidden
 set number
 set relativenumber
 set cursorline
@@ -51,6 +50,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
+hi Search guibg=peru guifg=wheat
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
+
 set shell=/bin/zsh
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
@@ -74,9 +77,6 @@ call plug#begin(stdpath('data') . '/plugged')
 	Plug 'tpope/vim-surround'
 	" acynchronous grep with some additions
 	Plug 'mhinz/vim-grepper'
-
-	" On-demand loading
-	Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 
 	" Plugin outside ~/.vim/plugged with post-update hook
 	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
@@ -303,8 +303,12 @@ let investWiki.path = '~/Documents/vimwiki/investwiki'
 let investWiki.syntax = 'markdown'
 let investWiki.ext = '.md'
 
+let jobWiki = {}
+let jobWiki.path = '~/Documents/vimwiki/jobwiki'
+let jobWiki.syntax = 'markdown'
+let jobWiki.ext = '.md'
 
-let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki, investWiki]
+let g:vimwiki_list = [itWiki, pWiki, dicWiki, keysWiki, devWiki, otherWiki, investWiki, jobWiki]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " for snippets to work with tab
 let g:vimwiki_table_mappings=0
@@ -342,3 +346,8 @@ xmap gs <plug>(GrepperOperator)
 nmap [q :cprevious<CR>
 nmap ]q :cnext<CR>
 
+let g:netrw_banner = 0
+
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
+nnoremap <Leader>b :buffers<CR>:buffer<Space>

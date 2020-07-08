@@ -1,3 +1,12 @@
+# google cloud service part
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/dago/Installs/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dago/Installs/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/dago/Installs/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dago/Installs/google-cloud-sdk/completion.zsh.inc'; fi
+
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
@@ -87,3 +96,4 @@ source $HOME/.config/zsh/plugins/fzf/fzf.plugin.zsh
 source $HOME/.config/zsh/plugins/forgit/forgit.plugin.zsh
 # Load zsh-syntax-highlighting; should be last.
 source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+pfetch

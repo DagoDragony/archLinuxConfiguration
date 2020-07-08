@@ -27,8 +27,10 @@ log() {
 	echo $1 | systemd-cat -t "${0#*/}"
 }
 
+echo $$
 
-if [ -z $1 ]
+
+if [[ -z $1 ]]
 then
 	cat $HOME/.config/psen/servers
 else
@@ -64,10 +66,12 @@ else
 	case $osType in
 		"W")
 			log "windows!"
-			domain=$(echo $user | grep -Po "^[^\\\\]*")
-			userName=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
+			userName=$(echo $user | grep -Po "^[^\\\\]*")
+			domain=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
+			log 'domain='$domain' username='$userName
 			sharedFolder="/drive:rdpShare,$HOME/Documents/remoteShare"
 			cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /workarea /clipboard $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
+			echo "$cmd"
 			log "$cmd"
 			eval $cmd
 			;;

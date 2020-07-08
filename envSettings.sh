@@ -2,7 +2,6 @@
 
 saveDirOutsideHomeDir="configuration/other"
 foldersOutsideHomeDir=(
-  "/etc/X11/xorg.conf.d"
   "/var/spool/cron"
 )
 
@@ -21,6 +20,8 @@ foldersToCopyFromHomeDir=(
   ".config/scripts"
   ".config/zsh"
   ".config/aliasrc"
+  ".config/vifm"
+  ".config/sxiv"
   ".zprofile"
   ".profile"
 )
