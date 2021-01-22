@@ -25,6 +25,8 @@ set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
 
+set colorcolumn=100
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -103,10 +105,14 @@ call plug#begin(stdpath('data') . '/plugged')
 	Plug 'vimwiki/vimwiki'
 	Plug 'junegunn/goyo.vim'
 	Plug 'chazy/dirsettings'
+	Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 	"autocmd FileType json syntax match Comment +\/\/.\+$+
-
+	
+	" Plug 'preservim/nerdtree'
 	" Initialize plugin system
+	" Docker file highlight
+	Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 
 
@@ -120,6 +126,32 @@ omap <leader><tab> <plug>(fzf-maps-o)
 nmap <leader>n :FZF<cr>
 nmap <leader>m :Rg<cr>
 
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'border': 'sharp', 'highlight': 'Comment' } }
+
+" let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+" function! FloatingFZF()
+"   let buf = nvim_create_buf(v:false, v:true)
+"   call setbufvar(buf, '&signcolumn', 'no')
+ 
+"   let height = float2nr(10)
+"   let width = float2nr(80)
+"   let horizontal = float2nr((&columns - width) / 2)
+"   let vertical = 1
+ 
+"   let opts = {
+"         \ 'relative': 'editor',
+"         \ 'row': vertical,
+"         \ 'col': horizontal,
+"         \ 'width': width,
+"         \ 'height': height,
+"         \ 'style': 'minimal'
+"         \ }
+ 
+"   call nvim_open_win(buf, v:true, opts)
+" endfunction
+
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -127,7 +159,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 " Advanced customization using Vim function
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-nmap <esc> :noh<cr>
+nmap <esc> :noh \| cclose<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -144,6 +176,9 @@ endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+" possibly change to on returning to normal mode
+nmap <silent> <c-s> :w<CR>
+
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
@@ -260,12 +295,12 @@ let g:lightline = {
 
 map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
-silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F2> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeToggle="<F2>"
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
+map <silent> <leader>o :!cd %:p:h;nohup ct<CR>
 
 
 let pWiki = {}
@@ -304,7 +339,7 @@ let investWiki.syntax = 'markdown'
 let investWiki.ext = '.md'
 
 let jobWiki = {}
-let jobWiki.path = '~/Documents/vimwiki/jobwiki'
+let jobWiki.path = '~/Documents/vimwiki/aj'
 let jobWiki.syntax = 'markdown'
 let jobWiki.ext = '.md'
 
@@ -350,4 +385,5 @@ let g:netrw_banner = 0
 
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nmap m<cr> :make<cr>

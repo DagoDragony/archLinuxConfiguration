@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+cmd="brave --app=https://www.youtube.com/results\?search_query=$1"
+echo $cmd
+eval $cmd

@@ -1,5 +1,6 @@
+[ -f $HOME/.profile ] && source $HOME/.profile
 # google cloud service part
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/dago/Installs/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dago/Installs/google-cloud-sdk/path.zsh.inc'; fi
@@ -17,6 +18,7 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE=$HOME/.config/zsh/history
+# export XDG_CONFIG_HOME=$HOME/.config
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt EXTENDED_HISTORY
@@ -97,3 +99,5 @@ source $HOME/.config/zsh/plugins/forgit/forgit.plugin.zsh
 # Load zsh-syntax-highlighting; should be last.
 source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 pfetch
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps auxh | awk '{ print "/proc/"$2"/fd" }' | xargs -I{} -d $'\n' -n1 sh -c 'echo -e "{}\t$(ls -A {} | wc -w)"' 2>&1 | grep -E "^/proc" | sort -nr -k2 | head -n 10

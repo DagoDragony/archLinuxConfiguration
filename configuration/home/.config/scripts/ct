@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+cmd="st -e $1"
+echo $cmd
+eval $cmd

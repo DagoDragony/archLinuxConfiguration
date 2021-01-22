@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+cmd="brave --incognito"
+echo $cmd
+eval $cmd

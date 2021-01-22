@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+cmd="st -e htop"
+echo $cmd
+eval $cmd

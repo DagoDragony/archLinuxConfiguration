@@ -1,0 +1,134 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'b
+	/home/dago/bin/
+	..
+1594229973
+'h
+	/home/dago/
+	..
+1594229973
+'p
+	/home/dago/.java
+	.userPrefs
+1602855920
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/dago/.config/variety/Favorites
+	..
+0
+d/home/dago/Projects
+	MonitoringAPI
+2
+d/home/dago/Projects/MonitoringAPI
+	..
+0
+d/home/dago/Projects
+	voidrice
+41
+d/home/dago/Projects/voidrice
+	..
+0
+d/home/dago/Projects
+	templates
+39
+d/home/dago
+	Postman
+7
+d/home
+	dago
+1
+d/home/dago
+	Postman
+7
+d/home/dago/Postman
+	..
+0
+d/home/dago
+	Pictures
+6
+d/home
+	..
+0
+d/
+	home
+4
+d/home
+	dago
+1
+d/home/dago
+	code
+40
+d
+
+# Right window history (oldest to newest):
+D/home/dago/Projects/archLinuxConfiguration
+	..
+0
+D
+
+# Command line history (oldest to newest):
+:!less %f<cr>
+:!echo %f | less<cr>
+:!echo "%f" | less<cr>
+:!less<cr>
+:!ls
+:!ls | less
+:!less
+:!echo "%f" | less
+:!echo "$(pwd)" | less
+:!sxiv *.jpg
+:!gvim &
+:!gedit &
+:h
+:~
+:!~
+:q
+
+# Search history (oldest to newest):
+/appli
+/.config
+/var
+/env
+/down
+/kafka
+
+# Prompt history (oldest to newest):
+pprepareServer.sh
+pprepareServerForVisualVm.sh
+pjava_error_in_IDEA_115225
+p.Rhistory
+p.Xauthority
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/dago/.local/share/vifm/Trash/000_etc
+	/home/dago/Projects/archLinuxConfiguration/configuration/other/etc
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].0
+]F
+s0

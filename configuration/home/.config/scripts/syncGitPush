@@ -19,4 +19,8 @@ push() {
 
 cd $syncDir
 # checks if git has any changes to commit
-git diff-index --quiet HEAD -- || push 
+if [ -d .git ]; then
+	git diff-index --quiet HEAD -- || push 
+else
+	notify-send --urgency=critical "$scriptName" "$syncDir is not a git repository!"
+fi;

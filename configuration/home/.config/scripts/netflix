@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+cmd="brave --app=http://netflix.com"
+echo $cmd
+eval $cmd

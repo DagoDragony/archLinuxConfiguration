@@ -2,4 +2,21 @@ SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
 
-1 * * * * . $HOME/.profile; $HOME/.config/scripts/syncGitRepos -a push -r "$HOME/Documents/vimwiki/"; 
+
+# . in the end means source
+1  * * * * . $HOME/.profile; syncGitRepos -a push -r "$HOME/Documents/vimwiki/"; 
+1 19 * * * . $HOME/.profile; backupHome
+1 20 * * * . $HOME/.profile; rclone sync /home/.backup gdrive:backup --mega-hard-delete && notify-send "Sync" "Successfully synced" || notify-send --urgency=critical "Sync" "Failed to sync"
+
+
+# *    *    *   *    *  Command_to_execute */
+# |    |    |    |   | */       
+# |    |    |    |    Day of the Week ( 0 - 6 ) ( Sunday = 0 ) */
+# |    |    |    | */
+# |    |    |    Month ( 1 - 12 ) */
+# |    |    | */
+# |    |    Day of Month ( 1 - 31 ) */
+# |    | */
+# |    Hour ( 0 - 23 ) */
+# | */
+# Min ( 0 - 59 ) */

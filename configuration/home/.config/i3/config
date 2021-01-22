@@ -6,7 +6,8 @@
 #
 
 
-exec_always "~/.config/i3/set_keyboard.sh"
+exec_always "~/.config/scripts/set_keyboard.sh"
+exec --no-startup-id xrdb -merge ~/.config/Xresources
 # transparency and shadows
 exec --no-startup-id dockd --daemon
 exec --no-startup-id xcompmgr 
@@ -55,13 +56,20 @@ floating_modifier $mod
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec st 
 bindsym $mod+t exec hotplug_monitor.sh 
+
 bindsym $mod+b exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/books.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
-bindsym $mod+shift+b exec qutebrowser
-#bindsym $mod+c exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/serversConnect.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym $mod+o exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/kubectlSel.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym $mod+p exec "PATH=$PATH:$HOME/.config/scripts;export PATH;rofi -modi 'rdp:/home/dago/.config/rofi/scripts/project.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym Control+$mod+p exec "PATH=$PATH:$HOME/.config/scripts;export PATH;rofi -modi 'rdp:/home/dago/.config/rofi/scripts/projectDirs.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+
 bindsym $mod+c exec "cat ~/.config/psen/servers | rofi -dmenu -multi-select active -theme /usr/share/rofi/themes/arthur.rasi | xargs -r -I {} /home/dago/.config/rofi/scripts/serversConnect.sh {}"
-bindsym $mod+d exec  "PATH=$PATH:$HOME/.config/scripts;export PATH;rofi -show run active -theme /usr/share/rofi/themes/arthur.rasi"
-bindsym $mod+Shift+d exec bash ~/.config/rofi/scripts/picker.sh
+bindsym $mod+shift+c exec "cat ~/.config/psen/servers | rofi -multi-select active -theme /usr/share/rofi/themes/arthur.rasi | xargs -r -I {} /home/dago/.config/rofi/scripts/serversConnect.sh {}"
+
+bindsym $mod+d exec "PATH=$PATH:$HOME/.config/scripts;export PATH;rofi -show run active -theme /usr/share/rofi/themes/arthur.rasi"
 bindsym Control+$alt+d exec "rofi -modi 'rdp:/home/dago/.config/rofi/scripts/keysAndCommands.sh' -show rdp -theme /usr/share/rofi/themes/arthur.rasi"
+bindsym $mod+Shift+d exec bash ~/.config/rofi/scripts/picker.sh
+
+bindsym $mod+shift+b exec qutebrowser
 bindsym $mod+Mod2+KP_2 exec $(variety --trash && notify-send "Variety" "Moved to trash")
 bindsym $mod+Mod2+KP_4 exec $(variety --previous && notify-send "Variety" "Previous")
 bindsym $mod+Mod2+KP_6 exec $(variety --next && notify-send "Variety" "Next")
@@ -187,7 +195,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)

@@ -5,13 +5,15 @@ image/jpeg=gimp.desktop;ristretto.desktop;
 application/x-shellscript=org.gnome.gedit.desktop;
 application/pdf=org.gnome.Evince.desktop;
 application/xml=chromium.desktop;
+application/sql=org.gnome.gedit.desktop;
 
 [Default Applications]
 x-scheme-handler/magnet=torrent.desktop
 application/x-bittorrent=torrent.desktop
-text/html=brave-browser.desktop
-x-scheme-handler/http=brave-browser.desktop
-x-scheme-handler/https=brave-browser.desktop
-x-scheme-handler/about=brave-browser.desktop
-x-scheme-handler/unknown=brave-browser.desktop
+text/html=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
 x-scheme-handler/postman=PostmanCanary.desktop
+x-scheme-handler/msteams=teams.desktop

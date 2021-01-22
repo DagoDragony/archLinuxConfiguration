@@ -6,4 +6,4 @@
 
 pgrep -x transmission-da >/dev/null || (transmission-daemon && notify-send "Starting transmission daemon...")
 
-nohup st -e transmission-remote-cli
+nohup st -e tremc

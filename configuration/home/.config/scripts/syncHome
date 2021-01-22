@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+rclone sync /home/.backup gdrive:backup --mega-hard-delete \
+	&& notify-send "Sync" "Successfully synced" \
+	|| notify-send --urgency=critical "Sync" "Failed to sync"

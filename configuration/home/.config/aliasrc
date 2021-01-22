@@ -27,7 +27,6 @@ alias \
 	gp="git pull" \
 	gcm="git checkout master" \
 	gca="git commit -v -a" \
-	tremc="transmission-remote-cli" \
 	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
@@ -39,7 +38,10 @@ alias \
 	sbtDependencyBrowseTree="sbt dependencyBrowseTree" \
 	sbtDependencyStats="sbt dependencyStats | less -R" \
 	sbtWhatDependsOn="print -z 'sbt \"whatDependsOn com.google.protobuf protobuf-java\"'" \
-	newscalaproject="echo $1"
+	newscalaproject="echo $1" \
+	pd="cd ~/Projects/droneTesting" \
+	vi="nvim" \
+	k="kubectl"
 
 vf(){ fzf | xargs -r -I % $EDITOR % ;}
 se(){ find ~/.config/ -type f | fzf | xargs -r $EDITOR ;}

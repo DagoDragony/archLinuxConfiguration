@@ -5,10 +5,16 @@
 ###############################################################
 
 booksFolder="$HOME/Documents/books/"
+cd $booksFolder
 
 if [ -z $1 ]
 then
-	ls -tu $booksFolder
+	find . -type f -maxdepth 1 -printf "%T@ %f\n" | sort -rn | cut -f 1 -d ' ' --complement
+	# deprecated as no file filter
+	# ls -tu $booksFolder
 else
-	coproc (zathura "$booksFolder/$1" &)
+	# . $HOME/.profile
+	# cmd='zathura "'$1'"'
+	# echo "$cmd" | systemd-cat
+	coproc (zathura "$1" &)
 fi

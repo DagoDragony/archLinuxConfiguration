@@ -17,18 +17,17 @@ defaultPassMap=(
     "L_d3:ppPass"
     "L_pp:ppPass"
     "L_pr:ppPass"
-    "W_d1:adPass"
+    "W_d1:ppPass"
     "W_d3:ppPass"
     "W_pp:ppPass"
     "W_pr:ad"
 )
 
+scriptName=$(basename $0)
+
 log() {
-	echo $1 | systemd-cat -t "${0#*/}"
+	echo $1 | systemd-cat -t $scriptName
 }
-
-echo $$
-
 
 if [[ -z $1 ]]
 then
@@ -66,19 +65,49 @@ else
 	case $osType in
 		"W")
 			log "windows!"
-			userName=$(echo $user | grep -Po "^[^\\\\]*")
-			domain=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
+			domain=$(echo $user | grep -Po "^[^\\\\]*")
+			userName=$(echo $user | grep -Po "(?<=\\\\)[^:]*")
+			if [[ -z $userName ]]
+			then
+				userName=$domain
+				domain=""
+			fi
 			log 'domain='$domain' username='$userName
-			sharedFolder="/drive:rdpShare,$HOME/Documents/remoteShare"
-			cmd="nohup pass $passId | xfreerdp /u:$userName /d:$domain /v:$server /cert-ignore /workarea /clipboard $sharedFolder /from-stdin > /dev/null 2>> logfile.log &"
-			echo "$cmd"
+			log $user
+			log $domain
+			log $userName
+			sharedFolderArg="/drive:rdpShare,$HOME/Documents/remoteShare"
+			if [[ -z $domain ]]
+			then
+				domainArg="/d:."
+			else
+				domainArg="/d:$domain"
+			fi
+			cmd="nohup pass $passId | xfreerdp /u:$userName $domainArg /v:$server /cert-ignore /workarea /clipboard $sharedFolderArg /from-stdin > /dev/null 2>> logfile.log &"
 			log "$cmd"
 			eval $cmd
 			;;
 		"L")
-			cmd="nohup st -e bash -c \"sshpass -f <(pass $passId) ssh -o StrictHostKeyChecking=no $user@$server \" > /dev/null &"
-			log "$cmd"
-			eval $cmd
+			sessionName="tmux_$PPID"
+
+			tmux start-server
+
+			# if session doesn't exist
+			tmux has-session -t $sessionName 2>/dev/null
+			
+			if [ $? != 0 ]; then
+				log "no session $sessionName!"
+				# tmux new-session -d -s $sessionName -d "/usr/bin/env sh -c \"echo 'first shell'\"; /usr/bin/env sh -i"
+				tmux new-session -d -s $sessionName -d "sshpass -f <(pass $passId) ssh -o StrictHostKeyChecking=no $user@$server"
+				cmd="nohup st -e bash -c \"tmux attach -t$sessionName \" > /dev/null &"
+				# cmd="nohup st -e bash -c \"sshpass -f <(pass $passId) ssh -o StrictHostKeyChecking=no $user@$server \" > /dev/null &"
+				log "$cmd"
+				eval $cmd
+			else
+				tmux split-window -t "$sessionName:0" "sshpass -f <(pass $passId) ssh -o StrictHostKeyChecking=no $user@$server"
+			fi
+
+			tmux select-layout -t "$sessionName:0" tiled
 			;;
 		"V")
 			cmd="nohup st -e bash -c \"vncviewer -passwd <(pass $passId | vncpasswd -f) $server \" > /dev/null &"

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+backupDir="/home/.backup"
+maxFiles=10
+
+mkdir -p $backupDir
+cd $backupDir
+
+nowDate="$(date --utc +%Y%m%d%H%M%S)"
+filename="${USER}_backup_$nowDate.tar.gz"
+tar -cpzvf $filename \
+	--exclude=Downloads \
+	--exclude=.cache \
+	--exclude='VirtualBox VMs' \
+	--exclude=code \
+	--exclude=Installs \
+	--exclude=Projects \
+	--exclude=.minikube \
+	--exclude=.local \
+	--exclude=.ivy2 \
+	--exclude=.Idea* \
+	--exclude=.sbt \
+	--exclude=.m2 \
+	--exclude=.npm \
+	--exclude=.mozilla \
+	--exclude=.GlobalProtect \
+	--exclude=.kube \
+	--exclude=.gem \
+	--exclude=chromium \
+	--exclude=Slack \
+	--exclude=BraveSoftware \
+	--exclude=.java \
+	--exclude=.idea-build \
+	--exclude=.newsboat \
+	--exclude=.fzf \
+	--exclude=.IntelliJ* \
+	--exclude=Downloaded $HOME/. && notify-send "Backup" "Successfully made $filename" || notify-send --urgency=critical "Backup" "Failed to make backup!"
+du -sh $filename
+
+# remove old files
+ls -t | tail -n "+$maxFiles" | xargs rm -f

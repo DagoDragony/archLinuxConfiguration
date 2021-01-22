@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+ct "globalprotect connect -p gp.adform.com -u d.gaizutis"

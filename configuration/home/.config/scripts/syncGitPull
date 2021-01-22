@@ -16,4 +16,8 @@ pull() {
 [[ -d "$syncDir" ]] || { echo "Bad path passed \"$syncDir\"" 1>&2; exit 1 }
 
 cd $syncDir
-pull
+if [ -d .git ]; then
+	pull
+else
+	notify-send --urgency=critical "$scriptName" "$syncDir is not a git repository!"
+fi;
