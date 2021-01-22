@@ -12,9 +12,6 @@ scan on
 pair dev
 connect dev
 
-
-
-
 # modules stuff
 lsmod # loaded kernel modules
 

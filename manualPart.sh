@@ -40,10 +40,11 @@ pacman -S linux-headers linux-lts linux-lts-headers
 
 pacman -S grub
 
-vi /etc/default/grub
+pacman -S neovim
+nvim /etc/default/grub
 # add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
 
-vi /etc/mkinitcpio.conf
+nvim /etc/mkinitcpio.conf
 # add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
 
 mkinitcpio -p linux-lts
@@ -66,14 +67,11 @@ passwd
 
 pacman -S openssh
 systemctl start sshd
-vim /etc/ssh/sshd_config
+nvim /etc/ssh/sshd_config
 # add "PermitRootLogin yes"
 
 useradd -m dago
 passwd dago
 
-
-
 exit
-
 reboot
