@@ -8,10 +8,10 @@ fdisk /dev/sda
 #	3p rest for /
 
 
-mkfs.ext4 /dev/sda1
+yes | mkfs.ext4 /dev/sda1
 
-mkswap /dev/sda2
-swapon /dev/sda2
+yes | mkswap /dev/sda2
+yess | swapon /dev/sda2
 
 cryptsetup -y -v luksFormat /dev/sda3
 cryptsetup open /dev/sda3 cryptroot

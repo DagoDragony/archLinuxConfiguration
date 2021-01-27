@@ -1,5 +1,6 @@
 ,pacman-contrib,"package that include rankmirrors  which orders mirror list by openning speeds"
 ,openssh,"ssh client"
+,libfido2,"ssh-agent additional dependency"
 ,intel-ucode,""
 ,xf86-video-intel,""
 ,mesa,""

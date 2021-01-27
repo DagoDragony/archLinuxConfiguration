@@ -34,11 +34,6 @@ echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
 
 echo "HandleLidSwitch=ignore" >> /etc/systemd/logind.conf
 
-# Arch User Repository (AUR)
-echo "[archlinuxfr]" >> /etc/pacman.conf
-echo "SigLevel = Never" >> /etc/pacman.conf
-echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
-
 # to file that is result of
 cp /etc/i3blocks.conf ./
 
