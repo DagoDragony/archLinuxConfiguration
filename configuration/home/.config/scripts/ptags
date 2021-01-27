@@ -1,0 +1,96 @@
+#!/bin/bash
+
+personalTagSufix="_DG_test_"
+
+addPTag(){
+	branchRef=$(git symbolic-ref HEAD)
+	repoPath=$(git remote get-url origin)
+	relativeRepoPath=${repoPath##*:}
+
+	if git describe --tags --exact-match; then
+		echo "Test tag for commit already exist, no new tags will be created!"
+		tag=$(git describe --tags --exact-match)
+		echo "@robot deploy ${relativeRepoPath%%.git} refs/tags/$tag d1-mstapi"
+	else
+		tag=$(git describe --tags --abbrev=0)
+
+		if [[ $tag == *$personalTagSufix* ]]; then
+			n=${tag##*[!0-9]}
+			p=${tag%%$n}
+			nextTag=$p$((n+1))
+		else
+			nextTag="$tag${personalTagSufix}1"
+		fi
+
+		echo $nextTag
+		git tag $nextTag
+		git push origin $nextTag
+
+		echo "@robot deploy ${relativeRepoPath%%.git} refs/tags/$nextTag d1-mstapi"
+	fi
+}
+
+removePTags(){
+	tagsToRemove=($(git tag | grep $personalTagSufix))
+	# if not empty
+	if (( ${#tagsToRemove[@]} )); then
+		echo "Tags to be deleted:"
+		printf '%s\n' "${tagsToRemove[@]}"
+		confirm
+		for pTag in "${tagsToRemove[@]}"; do
+			removePTag $pTag
+		done
+	else
+		echo "No personal tags found with sufix $personalTagSufix"
+	fi
+}
+
+removePTag(){
+	echo "Deleting tag $1"
+	git push origin :refs/tags/$1
+	git tag -d $1
+}
+
+confirm(){
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+help(){
+	scriptName=$(basename $0)
+	echo "$scriptName { add | clean }"	
+	exit 1
+}
+
+die() { echo >&2 "$@" ; exit 1 ; }
+
+validate(){
+	[[ -d .git ]] || die "It is not git repository!"
+}
+
+#-------------------------------------------
+
+case "$1" in
+	"add")
+		validate
+		git fetch
+		addPTag
+		;;
+	"clean")
+		validate
+		git fetch
+		removePTags
+		;;
+	*)
+		help
+		;;
+esac
+
