@@ -28,7 +28,7 @@ sgdisk -a 2048 -o ${DISK} # new gpt disk 2048 alignment
 # create partitions
 sgdisk -n 1:0:+1000M ${DISK} # boot partition
 sgdisk -n 2:0:+2000M ${DISK} # swap partition
-sgdisk -n 3:0:-50G   ${DISK} # main partition
+sgdisk -n 3:0:-10G   ${DISK} # main partition
 
 sgdisk -t 1:ef00 ${DISK} # Efi system partition
 sgdisk -t 2:8200 ${DISK} # BIOS boot partition
