@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -v
+
 echo "-------------------------------------------------"
 echo "Setting up mirrors for optimal download          "
 echo "-------------------------------------------------"
@@ -27,6 +29,7 @@ echo "--------------------------------------"
 # disk prep
 sgdisk -Z ${DISK} # zap all on disk
 sgdisk -a 2048 -o ${DISK} # new gpt disk 2048 alignment
+partprobe
 
 read a
 # create partitions
@@ -36,8 +39,8 @@ sgdisk -n 3:0:-10G   ${DISK} # main partition
 
 read a
 sgdisk -t 1:ef00 ${DISK} # Efi system partition
-sgdisk -t 2:8200 ${DISK} # BIOS boot partition
-sgdisk -t 1:8304 ${DISK} # Linux filesystem
+sgdisk -t 2:8200 ${DISK} # Linux swap
+sgdisk -t 1:8304 ${DISK} # Linux x86-x64 root (/)
 
 read a
 # label partitions
@@ -72,99 +75,99 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ##
 arch-chroot /mnt
 
-#pacman -Syy
-## pacman -S grub-bios ???
-##pacman -S wpa_supplicant wireless_tools
-#
-#pacman -S reflector
-#cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-#reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
-#
-#pacman -S linux-headers linux-lts linux-lts-headers
-#
-#pacman -S grub
-#
-#pacman -S neovim
-#nvim /etc/default/grub
-## add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
-#
-#nvim /etc/mkinitcpio.conf
-## add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
-#
-#mkinitcpio -p linux-lts
-#
-#grub-install --recheck /dev/sda
-#grub-mkconfig -o /boot/grub/grub.cfg
-#
-## for internet to be available on next run
-#pacman -S dhcpcd
-#systemctl enable dhcpcd
-#
-#pacman -S git
-#
-## SETTINGS
-#
-#echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
-#
-## change password
-#passwd
-#
-#pacman -S openssh
-#systemctl start sshd
-#nvim /etc/ssh/sshd_config
-## add "PermitRootLogin yes"
-#
-#useradd -m dago
-#passwd dago
-#
-#exit
-#reboot##
-#arch-chroot /mnt
-#
-#pacman -Syy
-## pacman -S grub-bios ???
-##pacman -S wpa_supplicant wireless_tools
-#
-#pacman -S reflector
-#cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-#reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
-#
-#pacman -S linux-headers linux-lts linux-lts-headers
-#
-#pacman -S grub
-#
-#pacman -S neovim
-#nvim /etc/default/grub
-## add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
-#
-#nvim /etc/mkinitcpio.conf
-## add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
-#
-#mkinitcpio -p linux-lts
-#
-#grub-install --recheck /dev/sda
-#grub-mkconfig -o /boot/grub/grub.cfg
-#
-## for internet to be available on next run
-#pacman -S dhcpcd
-#systemctl enable dhcpcd
-#
-#pacman -S git
-#
-## SETTINGS
-#
-#echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
-#
-## change password
-#passwd
-#
-#pacman -S openssh
-#systemctl start sshd
-#nvim /etc/ssh/sshd_config
-## add "PermitRootLogin yes"
-#
-#useradd -m dago
-#passwd dago
-#
-#exit
-#reboot
+pacman -Syy
+# pacman -S grub-bios ???
+#pacman -S wpa_supplicant wireless_tools
+
+pacman -S reflector
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
+
+pacman -S linux-headers linux-lts linux-lts-headers
+
+pacman -S grub
+
+pacman -S neovim
+nvim /etc/default/grub
+# add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
+
+nvim /etc/mkinitcpio.conf
+# add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
+
+mkinitcpio -p linux-lts
+
+grub-install --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# for internet to be available on next run
+pacman -S dhcpcd
+systemctl enable dhcpcd
+
+pacman -S git
+
+# SETTINGS
+
+echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
+
+# change password
+passwd
+
+pacman -S openssh
+systemctl start sshd
+nvim /etc/ssh/sshd_config
+# add "PermitRootLogin yes"
+
+useradd -m dago
+passwd dago
+
+exit
+reboot##
+arch-chroot /mnt
+
+pacman -Syy
+# pacman -S grub-bios ???
+#pacman -S wpa_supplicant wireless_tools
+
+pacman -S reflector
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
+
+pacman -S linux-headers linux-lts linux-lts-headers
+
+pacman -S grub
+
+pacman -S neovim
+nvim /etc/default/grub
+# add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
+
+nvim /etc/mkinitcpio.conf
+# add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
+
+mkinitcpio -p linux-lts
+
+grub-install --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# for internet to be available on next run
+pacman -S dhcpcd
+systemctl enable dhcpcd
+
+pacman -S git
+
+# SETTINGS
+
+echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
+
+# change password
+passwd
+
+pacman -S openssh
+systemctl start sshd
+nvim /etc/ssh/sshd_config
+# add "PermitRootLogin yes"
+
+useradd -m dago
+passwd dago
+
+exit
+reboot
