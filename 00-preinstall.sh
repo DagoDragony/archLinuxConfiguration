@@ -8,9 +8,11 @@ pacman -S --noconfirm pacman-contrib # for ranking mirrors
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
+read a
 echo -e "\nInstalling prereqs...\n$HR"
 pacman -S --noconfirm gptfdisk btrfs-progs
 
+read a
 echo "-------------------------------------------------"
 echo "-------select your disk to format----------------"
 echo "-------------------------------------------------"
@@ -25,20 +27,24 @@ echo "--------------------------------------"
 sgdisk -Z ${DISK} # zap all on disk
 sgdisk -a 2048 -o ${DISK} # new gpt disk 2048 alignment
 
+read a
 # create partitions
 sgdisk -n 1:0:+1000M ${DISK} # boot partition
 sgdisk -n 2:0:+2000M ${DISK} # swap partition
 sgdisk -n 3:0:-10G   ${DISK} # main partition
 
+read a
 sgdisk -t 1:ef00 ${DISK} # Efi system partition
 sgdisk -t 2:8200 ${DISK} # BIOS boot partition
 sgdisk -t 1:8304 ${DISK} # Linux filesystem
 
+read a
 # label partitions
 sgdisk -c 1:"UEFISYS" ${DISK}
 sgdisk -c 2:"SWAP"    ${DISK}
 sgdisk -c 3:"ROOT"    ${DISK}
 
+read a
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
@@ -47,14 +53,17 @@ mkfs.vfat -F32 -n "UEFISYS" "${DISK}1"
 mkswap "${DISK}2"
 swapon "${DISK}2"
 
+read a
 cryptsetup -y -v luksFormat "${DISK}3"
 cryptsetup open "${DISK}3" cryptroot
 mkfs.ext4 /dev/mapper/cryptroot
 mount /dev/mapper/cryptroot /mnt
 
+read a
 mkdir /mnt/boot
 mount "${DISK}1" /mnt/boot
 
+read a
 pacstrap -i /mnt base base-devel
 
 genfstab -U /mnt >> /mnt/etc/fstab
