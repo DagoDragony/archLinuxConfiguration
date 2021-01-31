@@ -13,7 +13,7 @@ curl -sL "https://archlinux.org/mirrorlist/?country=LT&protocol=https&use_mirror
 
 read a
 echo -e "\nInstalling prereqs...\n$HR"
-pacman -S --noconfirm gptfdisk btrfs-progs
+pacman -S --noconfirm gptfdisk
 
 read a
 echo "-------------------------------------------------"
@@ -29,7 +29,6 @@ echo "--------------------------------------"
 # disk prep
 sgdisk -Z ${DISK} # zap all on disk
 sgdisk -a 2048 -o ${DISK} # new gpt disk 2048 alignment
-partprobe
 
 read a
 # create partitions
@@ -120,8 +119,6 @@ nvim /etc/ssh/sshd_config
 useradd -m dago
 passwd dago
 
-exit
-reboot##
 arch-chroot /mnt
 
 pacman -Syy
