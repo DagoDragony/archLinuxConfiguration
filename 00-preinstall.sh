@@ -67,104 +67,12 @@ mkdir /mnt/boot
 mount "${DISK}1" /mnt/boot
 
 read a
-pacstrap -i /mnt base base-devel
+pacstrap /mnt base base-devel linux linux-firmware vim nano sudo --noconfirm --needed
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-##
-arch-chroot /mnt
+cp Installers/archChroot.sh /mnt/root
 
-pacman -Syy
-# pacman -S grub-bios ???
-#pacman -S wpa_supplicant wireless_tools
+arch-chroot /mnt /root/archChroot.sh
 
-pacman -S reflector
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
-
-pacman -S linux-headers linux-lts linux-lts-headers
-
-pacman -S grub
-
-pacman -S neovim
-nvim /etc/default/grub
-# add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
-
-nvim /etc/mkinitcpio.conf
-# add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
-
-mkinitcpio -p linux-lts
-
-grub-install --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# for internet to be available on next run
-pacman -S dhcpcd
-systemctl enable dhcpcd
-
-pacman -S git
-
-# SETTINGS
-
-echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
-
-# change password
-passwd
-
-pacman -S openssh
-systemctl start sshd
-nvim /etc/ssh/sshd_config
-# add "PermitRootLogin yes"
-
-useradd -m dago
-passwd dago
-
-arch-chroot /mnt
-
-pacman -Syy
-# pacman -S grub-bios ???
-#pacman -S wpa_supplicant wireless_tools
-
-pacman -S reflector
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-reflector --country Lithuania -p http --save /etc/pacman.d/mirrorlist
-
-pacman -S linux-headers linux-lts linux-lts-headers
-
-pacman -S grub
-
-pacman -S neovim
-nvim /etc/default/grub
-# add GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptroot"
-
-nvim /etc/mkinitcpio.conf
-# add HOOKS="base udev autodetect modconf block encrypt filesystems keyboard fsck"
-
-mkinitcpio -p linux-lts
-
-grub-install --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# for internet to be available on next run
-pacman -S dhcpcd
-systemctl enable dhcpcd
-
-pacman -S git
-
-# SETTINGS
-
-echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
-
-# change password
-passwd
-
-pacman -S openssh
-systemctl start sshd
-nvim /etc/ssh/sshd_config
-# add "PermitRootLogin yes"
-
-useradd -m dago
-passwd dago
-
-exit
 reboot
