@@ -2,7 +2,7 @@
 
 # install/update archiso
 yay -Syy
-yay -S archiso
+yay -S --noconfirm archiso
 
 initialArchFolder=$(mktemp -d)
 cp -r /usr/share/archiso/configs/releng/* $initialArchFolder
