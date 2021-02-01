@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+
+
 pacman -Syy
 
 pacman -S --noconfirm neovim # just in case
@@ -31,15 +33,23 @@ systemctl enable dhcpcd
 # SETTINGS
 echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
 
-# change password
-passwd
+# change root password
+[[ $(passwd --status root | awk '{print $2}') == 'P' ]] && passwd
 
 pacman -S --noconfirm openssh
-systemctl start sshd
-nvim /etc/ssh/sshd_config
-# add "PermitRootLogin yes"
+cat /etc/ssh/sshd_config | grep  "^PermitRootLogin"
+if [[ $? == 1 ]]; then
+  echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+else
+  sed -i.bak 's/^PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/ssh_config
+fi
 
-useradd -m dago
-passwd dago
+systemctl start sshd
+
+# create secondary user
+id dago >/dev/null 2>&1
+[[ $? == 0 ]] || useradd -m dago
+
+[[ $(passwd --status dago | awk '{print $2}') == 'P' ]] && passwd dago
 
 exit
