@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 pacman -Syy
 
 pacman -S --noconfirm neovim # just in case
@@ -13,7 +11,7 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 reflector --country Lithuania -p http --sort delay --save /etc/pacman.d/mirrorlist
 
 pacman -S --noconfirm linux-headers linux-lts linux-lts-headers
-pacman -S --noconfirm grub
+pacman -S --noconfirm grub efibootmgr
 
 # set cryptodevice info
 sed -i.bak 's/GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/sda3:cryptroot"/' /etc/default/grub
@@ -23,7 +21,7 @@ sed -i.bak 's/HOOKS=.*/HOOKS=(base udev autodetect modconf block encrypt filesys
 
 mkinitcpio -p linux-lts
 
-grub-install --recheck /dev/sda
+grub-install /dev/sda --recheck --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # for internet to be available on next run
