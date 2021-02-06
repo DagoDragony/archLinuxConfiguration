@@ -66,4 +66,6 @@ cp Installers/archChroot.sh /mnt/root
 
 arch-chroot /mnt /root/archChroot.sh
 
+umount -R /mnt
+
 reboot

@@ -2,9 +2,7 @@
 
 pacman -Syy
 
-pacman -S --noconfirm neovim # just in case
-# pacman -S grub-bios ???
-#pacman -S wpa_supplicant wireless_tools
+pacman -S --noconfirm neovim
 
 pacman -S --noconfirm reflector
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
@@ -42,7 +40,7 @@ else
   sed -i.bak 's/^PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/ssh_config
 fi
 
-systemctl start sshd
+systemctl enable --now sshd
 
 # create secondary user
 id dago >/dev/null 2>&1
