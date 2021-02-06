@@ -30,7 +30,7 @@ systemctl enable dhcpcd
 echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
 
 # change root password
-[[ $(passwd --status root | awk '{print $2}') == 'P' ]] && passwd
+[[ $(passwd --status root | awk '{print $2}') == 'P' ]] || passwd
 
 pacman -S --noconfirm openssh
 cat /etc/ssh/sshd_config | grep  "^PermitRootLogin"
@@ -46,6 +46,6 @@ systemctl enable --now sshd
 id dago >/dev/null 2>&1
 [[ $? == 0 ]] || useradd -m dago
 
-[[ $(passwd --status dago | awk '{print $2}') == 'P' ]] && passwd dago
+[[ $(passwd --status dago | awk '{print $2}') == 'P' ]] || passwd dago
 
 exit
