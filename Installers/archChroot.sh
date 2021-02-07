@@ -2,14 +2,14 @@
 
 pacman -Syy
 
-pacman -S --noconfirm neovim
+pacman -S neovim --noconfirm --needed
 
-pacman -S --noconfirm reflector
+pacman -S reflector --noconfirm --needed
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 reflector --country Lithuania -p http --sort delay --save /etc/pacman.d/mirrorlist
 
-pacman -S --noconfirm linux-headers linux-lts linux-lts-headers
-pacman -S --noconfirm grub efibootmgr
+pacman -S linux-headers linux-lts linux-lts-headers --noconfirm --needed
+pacman -S grub efibootmgr --noconfirm --needed
 
 # set cryptodevice info
 sed -i.bak 's/GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/sda3:cryptroot"/' /etc/default/grub
@@ -23,7 +23,7 @@ grub-install /dev/sda --recheck --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # for internet to be available on next run
-pacman -S --noconfirm dhcpcd
+pacman -S dhcpcd --noconfirm --noconfirm --needed
 systemctl enable dhcpcd
 
 # SETTINGS
@@ -32,7 +32,7 @@ echo "nameserver 1.1.1.1" >> /etc/resolvconf.conf
 # change root password
 [[ $(passwd --status root | awk '{print $2}') == 'P' ]] || passwd
 
-pacman -S --noconfirm openssh
+pacman -S openssh --noconfirm --needed
 cat /etc/ssh/sshd_config | grep  "^PermitRootLogin"
 if [[ $? == 1 ]]; then
   echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
@@ -46,6 +46,6 @@ systemctl enable --now sshd
 id dago >/dev/null 2>&1
 [[ $? == 0 ]] || useradd -m dago
 
-[[ $(passwd --status dago | awk '{print $2}') == 'P' ]] || passwd dago
+[[ $(passwd --status dago | awk '{print $2}') == 'P' ]] || (echo -e "Dago password:\n"; passwd dago)
 
 exit

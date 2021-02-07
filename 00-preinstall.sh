@@ -7,12 +7,12 @@ echo "Setting up mirrors for optimal download          "
 echo "-------------------------------------------------"
 timedatectl set-ntp true
 pacman -Sy
-pacman -S --noconfirm pacman-contrib # for ranking mirrors
+pacman -S pacman-contrib --noconfirm --needed # for ranking mirrors
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 curl -sL "https://archlinux.org/mirrorlist/?country=LT&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
 echo -e "\nInstalling prereqs...\n$HR"
-pacman -S --noconfirm gptfdisk
+pacman -S gptfdisk --noconfirm --needed
 
 echo "-------------------------------------------------"
 echo "-------select your disk to format----------------"
@@ -41,6 +41,8 @@ sgdisk -t 1:8304 ${DISK} # Linux x86-x64 root (/)
 sgdisk -c 1:"UEFISYS" ${DISK}
 sgdisk -c 2:"SWAP"    ${DISK}
 sgdisk -c 3:"ROOT"    ${DISK}
+
+# sgdisk -p /dev/sda
 
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
