@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 pacman -Syy
 
 pacman -S neovim --noconfirm --needed

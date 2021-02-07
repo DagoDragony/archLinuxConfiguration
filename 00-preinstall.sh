@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -v
-
+pac
 echo "-------------------------------------------------"
 echo "Setting up mirrors for optimal download          "
 echo "-------------------------------------------------"
