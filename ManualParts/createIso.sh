@@ -18,7 +18,12 @@ outputArchFolder=$(mktemp -d)
 sudo mkarchiso -v -w $workingDir -o $outputArchFolder $initialArchFolder
 
 outputIso=$(ls $outputArchFolder/*.iso)
-cp $outputIso ~/VMs
+cp $outputIso ~/VMs/latest.iso
+
+
+sudo rm -rf $workingDir
+sudo rm -rf $outputArchFolder
+sudo rm -rf $outputIso
 # run_archiso -i $outputIso
 
 

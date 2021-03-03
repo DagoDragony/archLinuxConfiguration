@@ -41,13 +41,13 @@ function setupNetwork {
 }
 
 function setupUsers {
-  [[ $(passwd --status root | awk '{print $2}') == 'P' ]] || passwd
+  [[ $(passwd --status root | awk '{print $2}') == 'P' ]] || (echo "Root password:"; passwd)
 
   # create secondary user
   id dago >/dev/null 2>&1
   [[ $? == 0 ]] || useradd -m dago
 
-  [[ $(passwd --status dago | awk '{print $2}') == 'P' ]] || (echo -e "Dago password:\n"; passwd dago)
+  [[ $(passwd --status dago | awk '{print $2}') == 'P' ]] || (echo "Dago password:"; passwd dago)
 }
 #----------------------------------------------
 setupMirrors
